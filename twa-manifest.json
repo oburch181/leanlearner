@@ -1,0 +1,43 @@
+{
+  "packageId": "dev.leanprover.nng4",
+  "host": "ais-pre-6p3ot4dlwy6czmwnhc7gzb-741846483769.us-west2.run.app",
+  "name": "Natural Number Game 4 (Lean 4)",
+  "launcherName": "NNG4 Lean",
+  "display": "standalone",
+  "themeColor": "#0f172a",
+  "themeColorDark": "#020617",
+  "navigationColor": "#020617",
+  "navigationColorDark": "#020617",
+  "navigationDividerColor": "#0f172a",
+  "navigationDividerColorDark": "#0f172a",
+  "backgroundColor": "#020617",
+  "enableNotifications": false,
+  "startUrl": "/",
+  "iconUrl": "https://ais-pre-6p3ot4dlwy6czmwnhc7gzb-741846483769.us-west2.run.app/pwa-512x512.png",
+  "maskableIconUrl": "https://ais-pre-6p3ot4dlwy6czmwnhc7gzb-741846483769.us-west2.run.app/pwa-maskable-512x512.png",
+  "splashScreenFadeOutDuration": 300,
+  "signingKey": {
+    "path": "./android-release.keystore",
+    "alias": "nng4-key"
+  },
+  "appVersionName": "1.0.0",
+  "appVersionCode": 1,
+  "shortcuts": [],
+  "generatorApp": "bubblewrap-cli",
+  "webManifestUrl": "https://ais-pre-6p3ot4dlwy6czmwnhc7gzb-741846483769.us-west2.run.app/manifest.webmanifest",
+  "fallbackType": "customtabs",
+  "features": {},
+  "alphaDependencies": {
+    "enabled": false
+  },
+  "enableSiteSettingsShortcut": "true",
+  "isChromeOSOnly": false,
+  "isMetaQuest": false,
+  "fullScopeUrl": "https://ais-pre-6p3ot4dlwy6czmwnhc7gzb-741846483769.us-west2.run.app/",
+  "minSdkVersion": 24,
+  "orientation": "portrait",
+  "fingerprints": [],
+  "additionalTrustedOrigins": [],
+  "retainedBundles": [],
+  "appVersion": "1.0.0"
+}

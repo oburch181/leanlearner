@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="512" height="512">
+  <defs>
+    <linearGradient id="bg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a" />
+      <stop offset="50%" stop-color="#1e1b4b" />
+      <stop offset="100%" stop-color="#312e81" />
+    </linearGradient>
+    <linearGradient id="glow" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38bdf8" />
+      <stop offset="50%" stop-color="#818cf8" />
+      <stop offset="100%" stop-color="#c084fc" />
+    </linearGradient>
+    <linearGradient id="accent" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#34d399" />
+      <stop offset="100%" stop-color="#38bdf8" />
+    </linearGradient>
+  </defs>
+
+  <!-- Full-bleed background with no rounded corners for Android Adaptive Icon / Maskable safe zone -->
+  <rect width="512" height="512" fill="url(#bg)" />
+
+  <!-- Subtle centered rings strictly within 75% safe zone -->
+  <circle cx="256" cy="256" r="158" fill="none" stroke="#6366f1" stroke-width="2" stroke-dasharray="6 8" opacity="0.35"/>
+  <circle cx="256" cy="256" r="186" fill="none" stroke="#38bdf8" stroke-width="1.5" opacity="0.2"/>
+
+  <!-- Centered Peano Natural Number Symbol ℕ + Turnstile ⊢ inside 72% safe area -->
+  <g transform="translate(256, 256) scale(0.72) translate(-256, -256)">
+    <!-- Left double-struck bars of N -->
+    <path d="M 156 128 L 186 128 L 186 384 L 156 384 Z" fill="url(#glow)"/>
+    <path d="M 186 128 L 204 128 L 204 384 L 186 384 Z" fill="#ffffff" opacity="0.92"/>
+
+    <!-- Diagonal stroke -->
+    <path d="M 196 134 L 316 378 L 338 378 L 218 134 Z" fill="url(#glow)"/>
+
+    <!-- Right bar of N -->
+    <path d="M 318 128 L 348 128 L 348 384 L 318 384 Z" fill="url(#glow)"/>
+
+    <!-- Turnstile symbol (⊢) badge -->
+    <g transform="translate(316, 286)">
+      <circle cx="55" cy="55" r="52" fill="#0f172a" stroke="url(#accent)" stroke-width="5"/>
+      <line x1="38" y1="33" x2="38" y2="77" stroke="#34d399" stroke-width="7" stroke-linecap="round"/>
+      <line x1="38" y1="55" x2="74" y2="55" stroke="#34d399" stroke-width="7" stroke-linecap="round"/>
+    </g>
+  </g>
+</svg>

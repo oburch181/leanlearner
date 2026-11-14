@@ -1,0 +1,6 @@
+{
+  "name": "Natural Number Game (Lean 4) Android",
+  "description": "The official Natural Number Game (NNG4) for Android. Learn Lean 4 interactive theorem proving, construct natural numbers from Peano axioms, and master mathematical proofs on mobile.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
