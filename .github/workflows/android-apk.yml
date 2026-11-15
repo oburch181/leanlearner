@@ -40,7 +40,7 @@ jobs:
 
       - name: Install dependencies & sync Capacitor Android
         run: |
-          if [ -f package-lock.json ]; then npm ci; else npm install; fi
+          if [ -f package-lock.json ]; then npm ci --legacy-peer-deps; else npm install --legacy-peer-deps; fi
           VITE_BASE_PATH=/ npm run build
           npx cap sync android
 
