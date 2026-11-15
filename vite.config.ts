@@ -1,11 +1,23 @@
 import tailwindcss from '@tailwindcss/vite';
 import react from '@vitejs/plugin-react';
 import path from 'path';
-import {defineConfig} from 'vite';
-import {VitePWA} from 'vite-plugin-pwa';
+import { fileURLToPath } from 'url';
+import { defineConfig } from 'vite';
+import { VitePWA } from 'vite-plugin-pwa';
+
+const __dirname = path.dirname(fileURLToPath(import.meta.url));
+
+function normalizeBase(raw?: string): string {
+  if (!raw || raw === '/') return '/';
+  const withLeading = raw.startsWith('/') ? raw : `/${raw}`;
+  return withLeading.endsWith('/') ? withLeading : `${withLeading}/`;
+}
 
 export default defineConfig(() => {
+  const base = normalizeBase(process.env.VITE_BASE_PATH);
+
   return {
+    base,
     plugins: [
       react(),
       tailwindcss(),
@@ -20,9 +32,10 @@ export default defineConfig(() => {
           'pwa-512x512.png',
           'pwa-maskable-512x512.png',
           '.well-known/assetlinks.json',
+          '.nojekyll',
         ],
         manifest: {
-          id: '/',
+          id: base,
           name: 'Natural Number Game 4 (Lean 4)',
           short_name: 'NNG4 Lean',
           description: 'Official Lean 4 Natural Number Game for Android. Master mathematical theorem proving with Peano arithmetic.',
@@ -30,30 +43,30 @@ export default defineConfig(() => {
           background_color: '#020617',
           display: 'standalone',
           orientation: 'portrait',
-          start_url: '/',
-          scope: '/',
+          start_url: base,
+          scope: base,
           categories: ['education', 'games'],
           icons: [
             {
-              src: '/pwa-192x192.png',
+              src: `${base}pwa-192x192.png`,
               sizes: '192x192',
               type: 'image/png',
               purpose: 'any',
             },
             {
-              src: '/pwa-512x512.png',
+              src: `${base}pwa-512x512.png`,
               sizes: '512x512',
               type: 'image/png',
               purpose: 'any',
             },
             {
-              src: '/pwa-maskable-512x512.png',
+              src: `${base}pwa-maskable-512x512.png`,
               sizes: '512x512',
               type: 'image/png',
               purpose: 'maskable',
             },
             {
-              src: '/icon.svg',
+              src: `${base}icon.svg`,
               sizes: 'any',
               type: 'image/svg+xml',
               purpose: 'any',
@@ -62,7 +75,7 @@ export default defineConfig(() => {
         },
         workbox: {
           globPatterns: ['**/*.{js,css,html,ico,png,svg,woff,woff2,webmanifest}'],
-          navigateFallbackDenylist: [/^\/\.well-known\//],
+          navigateFallbackDenylist: [/\/\.well-known\//, /\/downloads\/.*\.apk$/],
           runtimeCaching: [
             {
               urlPattern: /^https:\/\/fonts\.googleapis\.com\/.*/i,

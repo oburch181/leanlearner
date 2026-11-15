@@ -90,7 +90,7 @@ define(['./workbox-afac4cd2'], (function (workbox) { 'use strict';
     "revision": "25d1b3c79f1c30dbe4741e870ce90b56"
   }, {
     "url": "index.html",
-    "revision": "8f3c062e4de82d7792dc64c6b4467b31"
+    "revision": "9f990842756f17c2252d7b840548131e"
   }, {
     "url": "icon.svg",
     "revision": "d2d70c66496c13a38c8a4c384a81edea"
@@ -107,14 +107,17 @@ define(['./workbox-afac4cd2'], (function (workbox) { 'use strict';
     "url": "assets/workbox-window.prod.es5-Bd17z0YL.js",
     "revision": null
   }, {
-    "url": "assets/web-DmJbIzKC.js",
+    "url": "assets/web-BNKcRD9Q.js",
     "revision": null
   }, {
-    "url": "assets/index-CWsn4bcI.js",
+    "url": "assets/index-cksFChpL.js",
     "revision": null
   }, {
-    "url": "assets/index-BFp--lg0.css",
+    "url": "assets/index-Cxem28Yi.css",
     "revision": null
+  }, {
+    "url": ".nojekyll",
+    "revision": "d41d8cd98f00b204e9800998ecf8427e"
   }, {
     "url": "apple-touch-icon.png",
     "revision": "cc3b68dd4ddd08cb3d0c3b8ac82a93b8"
@@ -145,7 +148,7 @@ define(['./workbox-afac4cd2'], (function (workbox) { 'use strict';
   }], {});
   workbox.cleanupOutdatedCaches();
   workbox.registerRoute(new workbox.NavigationRoute(workbox.createHandlerBoundToURL("index.html"), {
-    denylist: [/^\/\.well-known\//]
+    denylist: [/\/\.well-known\//, /\/downloads\/.*\.apk$/]
   }));
   workbox.registerRoute(/^https:\/\/fonts\.googleapis\.com\/.*/i, new workbox.CacheFirst({
     "cacheName": "google-fonts-cache",

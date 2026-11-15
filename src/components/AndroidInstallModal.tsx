@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import {
   X,
   Smartphone,
@@ -9,6 +9,7 @@ import {
   Terminal,
   Copy,
   Package,
+  Globe,
 } from 'lucide-react';
 import { usePWAInstall } from '../hooks/usePWAInstall';
 import { copyToClipboard } from '../utils/clipboard';
@@ -23,8 +24,30 @@ export const AndroidInstallModal: React.FC<AndroidInstallModalProps> = ({
   onClose,
 }) => {
   const { isInstallable, isInstalled, install } = usePWAInstall();
-  const [activeTab, setActiveTab] = useState<'pwa' | 'capacitor' | 'twa'>('pwa');
+  const [activeTab, setActiveTab] = useState<'download' | 'capacitor' | 'twa'>('download');
   const [copiedKey, setCopiedKey] = useState<string | null>(null);
+  const [apkAvailable, setApkAvailable] = useState<boolean>(false);
+
+  const apkUrl = `${import.meta.env.BASE_URL}downloads/nng4-lean.apk`;
+
+  useEffect(() => {
+    if (!isOpen) return;
+    let active = true;
+
+    fetch(apkUrl, { method: 'HEAD' })
+      .then((res) => {
+        const contentType = res.headers.get('content-type') || '';
+        const isBinaryApk = res.ok && !contentType.includes('text/html');
+        if (active) setApkAvailable(isBinaryApk);
+      })
+      .catch(() => {
+        if (active) setApkAvailable(false);
+      });
+
+    return () => {
+      active = false;
+    };
+  }, [isOpen, apkUrl]);
 
   if (!isOpen) return null;
 
@@ -72,8 +95,8 @@ bubblewrap build
               <Smartphone className="w-4 h-4 text-emerald-400" />
             </div>
             <div>
-              <h3 className="text-sm font-bold text-white">Android App & APK Export</h3>
-              <p className="text-[10px] text-slate-400">Package ID: dev.leanprover.nng4</p>
+              <h3 className="text-sm font-bold text-white">Get App on Your Phone</h3>
+              <p className="text-[10px] text-slate-400">GitHub Pages APK Download &amp; PWA Install</p>
             </div>
           </div>
           <button
@@ -87,14 +110,14 @@ bubblewrap build
         {/* Tab switcher */}
         <div className="grid grid-cols-3 gap-1 p-1.5 bg-slate-950 border-b border-slate-800 text-[11px]">
           <button
-            onClick={() => setActiveTab('pwa')}
+            onClick={() => setActiveTab('download')}
             className={`py-1.5 rounded-lg font-medium transition text-center ${
-              activeTab === 'pwa'
+              activeTab === 'download'
                 ? 'bg-emerald-600 text-white shadow-sm'
                 : 'text-slate-400 hover:text-slate-200'
             }`}
           >
-            Direct Install
+            Phone Download
           </button>
           <button
             onClick={() => setActiveTab('capacitor')}
@@ -104,7 +127,7 @@ bubblewrap build
                 : 'text-slate-400 hover:text-slate-200'
             }`}
           >
-            Native APK
+            Build APK
           </button>
           <button
             onClick={() => setActiveTab('twa')}
@@ -120,8 +143,42 @@ bubblewrap build
 
         {/* Body */}
         <div className="flex-1 overflow-y-auto p-4 space-y-4 no-scrollbar">
-          {activeTab === 'pwa' && (
+          {activeTab === 'download' && (
             <>
+              {/* Direct APK Download Card when hosted via GitHub Pages workflow */}
+              {apkAvailable ? (
+                <div className="p-3.5 rounded-xl bg-emerald-950/50 border border-emerald-500/40 space-y-2.5">
+                  <div className="flex items-center gap-2 text-xs font-bold text-emerald-300">
+                    <Package className="w-4 h-4 text-emerald-400" />
+                    <span>Android APK Ready for Download</span>
+                  </div>
+                  <p className="text-[11px] text-slate-300 leading-relaxed">
+                    Download the standalone offline Android installer directly to your phone and open it to install <strong className="text-white">NNG4 Lean</strong>.
+                  </p>
+                  <a
+                    href={apkUrl}
+                    download="nng4-lean.apk"
+                    className="w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-lg shadow-emerald-900/30 transition active:scale-95"
+                  >
+                    <Download className="w-4 h-4" />
+                    <span>Download nng4-lean.apk</span>
+                  </a>
+                </div>
+              ) : (
+                <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
+                  <div className="flex items-center gap-2 text-xs font-semibold text-emerald-300">
+                    <Globe className="w-4 h-4 text-emerald-400" />
+                    <span>GitHub Pages Auto-Deploy &amp; APK Link</span>
+                  </div>
+                  <ol className="list-decimal list-inside text-[11px] text-slate-400 space-y-1 font-sans leading-relaxed">
+                    <li>Push this repository to GitHub.</li>
+                    <li>Open <strong className="text-slate-200">Settings → Pages</strong> and set Source to <strong className="text-emerald-400">GitHub Actions</strong>.</li>
+                    <li>Open your <code className="text-indigo-300">github.io</code> link on your phone to download <code className="text-emerald-300">nng4-lean.apk</code> or install as an app!</li>
+                  </ol>
+                </div>
+              )}
+
+              {/* Instant Chrome PWA Install Option */}
               {isInstalled ? (
                 <div className="p-3 rounded-xl bg-emerald-950/40 border border-emerald-500/40 flex items-center gap-2.5 text-xs text-emerald-200">
                   <CheckCircle className="w-5 h-5 text-emerald-400 shrink-0" />
@@ -133,29 +190,29 @@ bubblewrap build
                 <div className="p-3 rounded-xl bg-indigo-950/40 border border-indigo-500/40 space-y-2">
                   <div className="flex items-center gap-2 text-xs font-bold text-indigo-300">
                     <Sparkles className="w-4 h-4 text-indigo-400" />
-                    <span>Instant Android Installation Ready</span>
+                    <span>One-Tap Browser App Install (PWA)</span>
                   </div>
                   <p className="text-[11px] text-slate-300">
-                    Install Natural Number Game 4 directly to your Android home screen with offline proof verification.
+                    Install directly from Chrome onto your phone&apos;s home screen with offline caching.
                   </p>
                   <button
                     onClick={async () => {
                       const res = await install();
                       if (res) onClose();
                     }}
-                    className="w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-lg shadow-emerald-900/30 transition active:scale-95"
+                    className="w-full py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-md transition active:scale-95"
                   >
                     <Download className="w-4 h-4" />
-                    <span>Install on Android Device</span>
+                    <span>Install App to Home Screen</span>
                   </button>
                 </div>
               ) : (
                 <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
                   <div className="text-xs font-semibold text-slate-200">
-                    Install via Chrome for Android:
+                    Or Install via Chrome for Android:
                   </div>
                   <ol className="list-decimal list-inside text-xs text-slate-400 space-y-1.5 font-sans leading-relaxed">
-                    <li>Open this app in <strong className="text-slate-200">Google Chrome</strong> on Android.</li>
+                    <li>Open your GitHub Pages URL in <strong className="text-slate-200">Google Chrome</strong> on Android.</li>
                     <li>Tap the <strong>three dots (⋮)</strong> menu in the top-right corner.</li>
                     <li>Tap <strong className="text-emerald-400">Install app</strong> or <strong className="text-emerald-400">Add to Home screen</strong>.</li>
                   </ol>
@@ -165,7 +222,7 @@ bubblewrap build
               <div className="p-3 rounded-xl bg-slate-950/60 border border-slate-800 text-xs text-slate-300 space-y-1">
                 <span className="font-semibold text-indigo-300">100% Offline Peano Engine:</span>
                 <p className="text-[11px] text-slate-400">
-                  All Lean 4 proof verification, AST normalization, and levels run locally with Service Worker caching enabled.
+                  All Lean 4 proof verification, AST normalization, and levels run locally on your phone.
                 </p>
               </div>
             </>
@@ -214,7 +271,7 @@ bubblewrap build
                   {keystoreCmd}
                 </pre>
                 <p className="text-[10px] text-slate-400">
-                  See <code className="text-slate-300">ANDROID_PUBLISHING.md</code> for <code className="text-slate-300">keystore.properties</code> and GitHub Actions CI APK builds.
+                  See <code className="text-slate-300">ANDROID_PUBLISHING.md</code> for GitHub Pages and keystore signing steps.
                 </p>
               </div>
             </div>
@@ -223,7 +280,7 @@ bubblewrap build
           {activeTab === 'twa' && (
             <div className="space-y-3">
               <p className="text-xs text-slate-300 leading-relaxed">
-                Compliant <code className="text-emerald-300">manifest.webmanifest</code>, maskable PNG icons, <code className="text-emerald-300">twa-manifest.json</code>, and <code className="text-emerald-300">.well-known/assetlinks.json</code> are ready for Trusted Web Activity (TWA) publishing.
+                Compliant <code className="text-emerald-300">manifest.webmanifest</code>, maskable PNG icons, <code className="text-emerald-300">twa-manifest.json</code>, and <code className="text-emerald-300">.well-known/assetlinks.json</code> (with <code className="text-emerald-300">.nojekyll</code>) are ready for Trusted Web Activity (TWA) publishing.
               </p>
 
               <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
@@ -240,7 +297,7 @@ bubblewrap build
                   </a>
                 </div>
                 <p className="text-[11px] text-slate-400">
-                  Enter your deployed HTTPS URL in PWABuilder to download a Google Play-ready Android package.
+                  Enter your GitHub Pages HTTPS URL in PWABuilder to download a Google Play-ready Android package.
                 </p>
               </div>
 
