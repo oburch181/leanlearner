@@ -86,58 +86,58 @@ bubblewrap build
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 bg-black/75 backdrop-blur-sm animate-fade-in">
-      <div className="w-full max-w-md bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl flex flex-col max-h-[90vh] overflow-hidden">
+    <div className="fixed inset-0 z-50 flex items-center justify-center p-3 bg-[#0C1B2E]/45 backdrop-blur-xs animate-fade-in">
+      <div className="w-full max-w-md bg-[#F4F8FC] border border-[#A8C4E0] rounded-3xl shadow-2xl flex flex-col max-h-[90vh] overflow-hidden">
         {/* Header */}
-        <div className="px-4 py-3 bg-slate-950 border-b border-slate-800 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <div className="w-8 h-8 rounded-lg bg-emerald-500/20 border border-emerald-400/30 flex items-center justify-center">
-              <Smartphone className="w-4 h-4 text-emerald-400" />
+        <div className="px-4 py-3.5 bg-[#E6F0FA] border-b border-[#C5D8EC] flex items-center justify-between">
+          <div className="flex items-center gap-2.5">
+            <div className="w-9 h-9 rounded-xl bg-[#F1F5F9] border border-[#CBD5E1] flex items-center justify-center">
+              <Smartphone className="w-5 h-5 text-[#475569]" />
             </div>
             <div>
-              <h3 className="text-sm font-bold text-white">Get App on Your Phone</h3>
-              <p className="text-[10px] text-slate-400">GitHub Pages APK Download &amp; PWA Install</p>
+              <h3 className="text-base font-extrabold text-[#0C1B2E]">Get App on Your Phone</h3>
+              <p className="text-xs text-[#36506B]">GitHub Pages APK Download &amp; PWA Install</p>
             </div>
           </div>
           <button
             onClick={onClose}
-            className="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition"
+            className="min-w-[40px] min-h-[40px] rounded-xl text-[#36506B] hover:text-[#0C1B2E] hover:bg-[#D5E6F7] transition flex items-center justify-center cursor-pointer"
           >
-            <X className="w-4 h-4" />
+            <X className="w-5 h-5" />
           </button>
         </div>
 
         {/* Tab switcher */}
-        <div className="grid grid-cols-3 gap-1 p-1.5 bg-slate-950 border-b border-slate-800 text-[11px]">
+        <div className="grid grid-cols-3 gap-1.5 p-2 bg-[#DCE9F7] border-b border-[#A8C4E0] text-xs">
           <button
             onClick={() => setActiveTab('download')}
-            className={`py-1.5 rounded-lg font-medium transition text-center ${
+            className={`min-h-[38px] py-1.5 rounded-xl font-bold transition text-center cursor-pointer ${
               activeTab === 'download'
-                ? 'bg-emerald-600 text-white shadow-sm'
-                : 'text-slate-400 hover:text-slate-200'
+                ? 'bg-[#0369A1] text-[#FFFFFF] shadow-xs'
+                : 'text-[#36506B] hover:bg-[#C2D7EE]'
             }`}
           >
-            Phone Download
+            Phone App
           </button>
           <button
             onClick={() => setActiveTab('capacitor')}
-            className={`py-1.5 rounded-lg font-medium transition text-center ${
+            className={`min-h-[38px] py-1.5 rounded-xl font-bold transition text-center cursor-pointer ${
               activeTab === 'capacitor'
-                ? 'bg-emerald-600 text-white shadow-sm'
-                : 'text-slate-400 hover:text-slate-200'
+                ? 'bg-[#0369A1] text-[#FFFFFF] shadow-xs'
+                : 'text-[#36506B] hover:bg-[#C2D7EE]'
             }`}
           >
             Build APK
           </button>
           <button
             onClick={() => setActiveTab('twa')}
-            className={`py-1.5 rounded-lg font-medium transition text-center ${
+            className={`min-h-[38px] py-1.5 rounded-xl font-bold transition text-center cursor-pointer ${
               activeTab === 'twa'
-                ? 'bg-emerald-600 text-white shadow-sm'
-                : 'text-slate-400 hover:text-slate-200'
+                ? 'bg-[#0369A1] text-[#FFFFFF] shadow-xs'
+                : 'text-[#36506B] hover:bg-[#C2D7EE]'
             }`}
           >
-            Play Store TWA
+            Play Store
           </button>
         </div>
 
@@ -147,52 +147,52 @@ bubblewrap build
             <>
               {/* Direct APK Download Card when hosted via GitHub Pages workflow */}
               {apkAvailable ? (
-                <div className="p-3.5 rounded-xl bg-emerald-950/50 border border-emerald-500/40 space-y-2.5">
-                  <div className="flex items-center gap-2 text-xs font-bold text-emerald-300">
-                    <Package className="w-4 h-4 text-emerald-400" />
+                <div className="p-4 rounded-2xl bg-[#F1F5F9] border border-[#CBD5E1] space-y-3">
+                  <div className="flex items-center gap-2 text-sm font-extrabold text-[#334155]">
+                    <Package className="w-5 h-5 text-[#475569]" />
                     <span>Android APK Ready for Download</span>
                   </div>
-                  <p className="text-[11px] text-slate-300 leading-relaxed">
-                    Download the standalone offline Android installer directly to your phone and open it to install <strong className="text-white">NNG4 Lean</strong>.
+                  <p className="text-sm text-[#475569] leading-relaxed">
+                    Download the standalone offline Android installer directly to your phone and open it to install <strong className="text-[#0C1B2E]">NNG4 Lean</strong>.
                   </p>
                   <a
                     href={apkUrl}
                     download="nng4-lean.apk"
-                    className="w-full py-2.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-lg shadow-emerald-900/30 transition active:scale-95"
+                    className="w-full min-h-[48px] py-3 rounded-xl bg-[#0369A1] hover:bg-[#075985] text-[#FFFFFF] font-bold text-sm flex items-center justify-center gap-2 shadow-sm transition active:scale-[0.98]"
                   >
-                    <Download className="w-4 h-4" />
+                    <Download className="w-5 h-5" />
                     <span>Download nng4-lean.apk</span>
                   </a>
                 </div>
               ) : (
-                <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
-                  <div className="flex items-center gap-2 text-xs font-semibold text-emerald-300">
-                    <Globe className="w-4 h-4 text-emerald-400" />
+                <div className="p-4 rounded-2xl bg-[#FFFFFF] border border-[#C5D8EC] space-y-2.5">
+                  <div className="flex items-center gap-2 text-sm font-extrabold text-[#334155]">
+                    <Globe className="w-4 h-4 text-[#475569]" />
                     <span>GitHub Pages Auto-Deploy &amp; APK Link</span>
                   </div>
-                  <ol className="list-decimal list-inside text-[11px] text-slate-400 space-y-1 font-sans leading-relaxed">
+                  <ol className="list-decimal list-inside text-sm text-[#36506B] space-y-1.5 font-sans leading-relaxed">
                     <li>Push this repository to GitHub.</li>
-                    <li>Open <strong className="text-slate-200">Settings → Pages</strong> and set Source to <strong className="text-emerald-400">GitHub Actions</strong>.</li>
-                    <li>Open your <code className="text-indigo-300">github.io</code> link on your phone to download <code className="text-emerald-300">nng4-lean.apk</code> or install as an app!</li>
+                    <li>Open <strong className="text-[#0C1B2E]">Settings → Pages</strong> and set Source to <strong className="text-[#0369A1]">GitHub Actions</strong>.</li>
+                    <li>Open your <code className="font-mono font-bold text-[#0369A1]">github.io</code> link on your phone to download <code className="font-mono font-bold text-[#334155]">nng4-lean.apk</code> or install as an app!</li>
                   </ol>
                 </div>
               )}
 
               {/* Instant Chrome PWA Install Option */}
               {isInstalled ? (
-                <div className="p-3 rounded-xl bg-emerald-950/40 border border-emerald-500/40 flex items-center gap-2.5 text-xs text-emerald-200">
-                  <CheckCircle className="w-5 h-5 text-emerald-400 shrink-0" />
+                <div className="p-3.5 rounded-2xl bg-[#F1F5F9] border border-[#CBD5E1] flex items-center gap-3 text-sm text-[#334155] font-medium">
+                  <CheckCircle className="w-5 h-5 text-[#475569] shrink-0" />
                   <span>
                     NNG4 is running in standalone Android mode with full offline support.
                   </span>
                 </div>
               ) : isInstallable ? (
-                <div className="p-3 rounded-xl bg-indigo-950/40 border border-indigo-500/40 space-y-2">
-                  <div className="flex items-center gap-2 text-xs font-bold text-indigo-300">
-                    <Sparkles className="w-4 h-4 text-indigo-400" />
+                <div className="p-4 rounded-2xl bg-[#E0F2FE] border border-[#7DD3FC] space-y-2.5">
+                  <div className="flex items-center gap-2 text-sm font-extrabold text-[#0369A1]">
+                    <Sparkles className="w-4 h-4 text-[#0369A1]" />
                     <span>One-Tap Browser App Install (PWA)</span>
                   </div>
-                  <p className="text-[11px] text-slate-300">
+                  <p className="text-sm text-[#0C1B2E] leading-relaxed">
                     Install directly from Chrome onto your phone&apos;s home screen with offline caching.
                   </p>
                   <button
@@ -200,28 +200,28 @@ bubblewrap build
                       const res = await install();
                       if (res) onClose();
                     }}
-                    className="w-full py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs flex items-center justify-center gap-2 shadow-md transition active:scale-95"
+                    className="w-full min-h-[46px] py-2.5 rounded-xl bg-[#0369A1] hover:bg-[#075985] text-[#FFFFFF] font-bold text-sm flex items-center justify-center gap-2 shadow-sm transition active:scale-[0.98] cursor-pointer"
                   >
                     <Download className="w-4 h-4" />
                     <span>Install App to Home Screen</span>
                   </button>
                 </div>
               ) : (
-                <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
-                  <div className="text-xs font-semibold text-slate-200">
+                <div className="p-4 rounded-2xl bg-[#FFFFFF] border border-[#C5D8EC] space-y-2">
+                  <div className="text-sm font-extrabold text-[#0C1B2E]">
                     Or Install via Chrome for Android:
                   </div>
-                  <ol className="list-decimal list-inside text-xs text-slate-400 space-y-1.5 font-sans leading-relaxed">
-                    <li>Open your GitHub Pages URL in <strong className="text-slate-200">Google Chrome</strong> on Android.</li>
-                    <li>Tap the <strong>three dots (⋮)</strong> menu in the top-right corner.</li>
-                    <li>Tap <strong className="text-emerald-400">Install app</strong> or <strong className="text-emerald-400">Add to Home screen</strong>.</li>
+                  <ol className="list-decimal list-inside text-sm text-[#36506B] space-y-1.5 font-sans leading-relaxed">
+                    <li>Open your GitHub Pages URL in <strong className="text-[#0C1B2E]">Google Chrome</strong> on Android.</li>
+                    <li>Tap the <strong className="text-[#0C1B2E]">three dots (⋮)</strong> menu in the top-right corner.</li>
+                    <li>Tap <strong className="text-[#0369A1]">Install app</strong> or <strong className="text-[#0369A1]">Add to Home screen</strong>.</li>
                   </ol>
                 </div>
               )}
 
-              <div className="p-3 rounded-xl bg-slate-950/60 border border-slate-800 text-xs text-slate-300 space-y-1">
-                <span className="font-semibold text-indigo-300">100% Offline Peano Engine:</span>
-                <p className="text-[11px] text-slate-400">
+              <div className="p-3.5 rounded-2xl bg-[#E6F0FA]/70 border border-[#C5D8EC] text-sm text-[#0C1B2E] space-y-1">
+                <span className="font-extrabold text-[#0369A1]">100% Offline Peano Engine:</span>
+                <p className="text-xs text-[#36506B] leading-relaxed">
                   All Lean 4 proof verification, AST normalization, and levels run locally on your phone.
                 </p>
               </div>
@@ -229,93 +229,93 @@ bubblewrap build
           )}
 
           {activeTab === 'capacitor' && (
-            <div className="space-y-3">
-              <p className="text-xs text-slate-300 leading-relaxed">
-                This project includes a complete <strong className="text-white">Capacitor Android</strong> Gradle project configured with adaptive icons, splash screens, dark status bar, and hardware Back navigation for building a standalone offline <code className="text-emerald-300">.apk</code> or Play Store <code className="text-emerald-300">.aab</code>.
+            <div className="space-y-3.5">
+              <p className="text-sm text-[#0C1B2E] leading-relaxed">
+                This project includes a complete <strong>Capacitor Android</strong> Gradle project configured with adaptive icons, splash screens, ice-blue status bar, and hardware Back navigation for building a standalone offline <code className="font-mono font-bold text-[#334155]">.apk</code> or Play Store <code className="font-mono font-bold text-[#334155]">.aab</code>.
               </p>
 
-              <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
+              <div className="p-3.5 rounded-2xl bg-[#FFFFFF] border border-[#C5D8EC] space-y-2.5">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-slate-200 flex items-center gap-1.5">
-                    <Package className="w-3.5 h-3.5 text-emerald-400" />
+                  <span className="text-sm font-extrabold text-[#0C1B2E] flex items-center gap-1.5">
+                    <Package className="w-4 h-4 text-[#475569]" />
                     <span>1. Build Offline APK / AAB</span>
                   </span>
                   <button
                     onClick={() => handleCopy('cap', capacitorCmds)}
-                    className="flex items-center gap-1 text-[10px] text-slate-400 hover:text-white px-1.5 py-0.5 rounded bg-slate-800"
+                    className="flex items-center gap-1 text-xs font-bold text-[#0C1B2E] px-2.5 py-1 rounded-lg bg-[#E6F0FA] border border-[#A8C4E0] hover:bg-[#DCE9F7] cursor-pointer"
                   >
-                    {copiedKey === 'cap' ? <CheckCircle className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
+                    {copiedKey === 'cap' ? <CheckCircle className="w-3.5 h-3.5 text-[#475569]" /> : <Copy className="w-3.5 h-3.5" />}
                     <span>{copiedKey === 'cap' ? 'Copied!' : 'Copy'}</span>
                   </button>
                 </div>
-                <pre className="p-2 rounded bg-slate-900 border border-slate-800 text-[10px] font-mono text-emerald-300 overflow-x-auto whitespace-pre">
+                <pre className="p-3 rounded-xl bg-[#EDF4FC] border border-[#C5D8EC] text-xs font-mono text-[#0C1B2E] overflow-x-auto whitespace-pre leading-relaxed">
                   {capacitorCmds}
                 </pre>
               </div>
 
-              <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
+              <div className="p-3.5 rounded-2xl bg-[#FFFFFF] border border-[#C5D8EC] space-y-2.5">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-slate-200 flex items-center gap-1.5">
-                    <Terminal className="w-3.5 h-3.5 text-indigo-400" />
+                  <span className="text-sm font-extrabold text-[#0C1B2E] flex items-center gap-1.5">
+                    <Terminal className="w-4 h-4 text-[#0369A1]" />
                     <span>2. Generate Release Signing Key</span>
                   </span>
                   <button
                     onClick={() => handleCopy('keytool', keystoreCmd)}
-                    className="flex items-center gap-1 text-[10px] text-slate-400 hover:text-white px-1.5 py-0.5 rounded bg-slate-800"
+                    className="flex items-center gap-1 text-xs font-bold text-[#0C1B2E] px-2.5 py-1 rounded-lg bg-[#E6F0FA] border border-[#A8C4E0] hover:bg-[#DCE9F7] cursor-pointer"
                   >
-                    {copiedKey === 'keytool' ? <CheckCircle className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
+                    {copiedKey === 'keytool' ? <CheckCircle className="w-3.5 h-3.5 text-[#475569]" /> : <Copy className="w-3.5 h-3.5" />}
                     <span>{copiedKey === 'keytool' ? 'Copied!' : 'Copy'}</span>
                   </button>
                 </div>
-                <pre className="p-2 rounded bg-slate-900 border border-slate-800 text-[10px] font-mono text-sky-300 overflow-x-auto whitespace-pre">
+                <pre className="p-3 rounded-xl bg-[#EDF4FC] border border-[#C5D8EC] text-xs font-mono text-[#0369A1] overflow-x-auto whitespace-pre leading-relaxed">
                   {keystoreCmd}
                 </pre>
-                <p className="text-[10px] text-slate-400">
-                  See <code className="text-slate-300">ANDROID_PUBLISHING.md</code> for GitHub Pages and keystore signing steps.
+                <p className="text-xs text-[#36506B]">
+                  See <code className="font-mono font-bold text-[#0C1B2E]">ANDROID_PUBLISHING.md</code> for GitHub Pages and keystore signing steps.
                 </p>
               </div>
             </div>
           )}
 
           {activeTab === 'twa' && (
-            <div className="space-y-3">
-              <p className="text-xs text-slate-300 leading-relaxed">
-                Compliant <code className="text-emerald-300">manifest.webmanifest</code>, maskable PNG icons, <code className="text-emerald-300">twa-manifest.json</code>, and <code className="text-emerald-300">.well-known/assetlinks.json</code> (with <code className="text-emerald-300">.nojekyll</code>) are ready for Trusted Web Activity (TWA) publishing.
+            <div className="space-y-3.5">
+              <p className="text-sm text-[#0C1B2E] leading-relaxed">
+                Compliant <code className="font-mono font-bold text-[#334155]">manifest.webmanifest</code>, maskable PNG icons, <code className="font-mono font-bold text-[#334155]">twa-manifest.json</code>, and <code className="font-mono font-bold text-[#334155]">.well-known/assetlinks.json</code> (with <code className="font-mono font-bold text-[#334155]">.nojekyll</code>) are ready for Trusted Web Activity (TWA) publishing.
               </p>
 
-              <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
+              <div className="p-3.5 rounded-2xl bg-[#FFFFFF] border border-[#C5D8EC] space-y-2">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-indigo-300">1. Online APK / AAB Generator</span>
+                  <span className="text-sm font-extrabold text-[#0369A1]">1. Online APK / AAB Generator</span>
                   <a
                     href="https://www.pwabuilder.com"
                     target="_blank"
                     rel="noreferrer"
-                    className="flex items-center gap-1 text-[11px] text-sky-400 hover:underline"
+                    className="flex items-center gap-1 text-xs font-bold text-[#0369A1] hover:underline"
                   >
                     <span>PWABuilder.com</span>
-                    <ExternalLink className="w-3 h-3" />
+                    <ExternalLink className="w-3.5 h-3.5" />
                   </a>
                 </div>
-                <p className="text-[11px] text-slate-400">
+                <p className="text-xs text-[#36506B] leading-relaxed">
                   Enter your GitHub Pages HTTPS URL in PWABuilder to download a Google Play-ready Android package.
                 </p>
               </div>
 
-              <div className="p-3 rounded-xl bg-slate-950 border border-slate-800 space-y-2">
+              <div className="p-3.5 rounded-2xl bg-[#FFFFFF] border border-[#C5D8EC] space-y-2.5">
                 <div className="flex items-center justify-between">
-                  <span className="text-xs font-bold text-slate-200 flex items-center gap-1.5">
-                    <Terminal className="w-3.5 h-3.5 text-slate-400" />
+                  <span className="text-sm font-extrabold text-[#0C1B2E] flex items-center gap-1.5">
+                    <Terminal className="w-4 h-4 text-[#36506B]" />
                     <span>2. Google Bubblewrap CLI</span>
                   </span>
                   <button
                     onClick={() => handleCopy('twa', bubblewrapCode)}
-                    className="flex items-center gap-1 text-[10px] text-slate-400 hover:text-white px-1.5 py-0.5 rounded bg-slate-800"
+                    className="flex items-center gap-1 text-xs font-bold text-[#0C1B2E] px-2.5 py-1 rounded-lg bg-[#E6F0FA] border border-[#A8C4E0] hover:bg-[#DCE9F7] cursor-pointer"
                   >
-                    {copiedKey === 'twa' ? <CheckCircle className="w-3 h-3 text-emerald-400" /> : <Copy className="w-3 h-3" />}
+                    {copiedKey === 'twa' ? <CheckCircle className="w-3.5 h-3.5 text-[#475569]" /> : <Copy className="w-3.5 h-3.5" />}
                     <span>{copiedKey === 'twa' ? 'Copied!' : 'Copy'}</span>
                   </button>
                 </div>
-                <pre className="p-2 rounded bg-slate-900 border border-slate-800 text-[10px] font-mono text-emerald-300 overflow-x-auto whitespace-pre">
+                <pre className="p-3 rounded-xl bg-[#EDF4FC] border border-[#C5D8EC] text-xs font-mono text-[#0C1B2E] overflow-x-auto whitespace-pre leading-relaxed">
                   {bubblewrapCode}
                 </pre>
               </div>

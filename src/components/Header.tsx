@@ -42,27 +42,27 @@ export const Header: React.FC<HeaderProps> = ({
   onOpenSettings,
 }) => {
   return (
-    <header className="h-12 w-full bg-slate-950/90 backdrop-blur-md border-b border-slate-800/80 px-3 flex items-center justify-between z-30 shrink-0">
+    <header className="h-14 w-full bg-[#E6F0FA]/95 backdrop-blur-md border-b border-[#C5D8EC] px-3 flex items-center justify-between gap-2 z-30 shrink-0 select-none">
       {/* Left: Back or Brand */}
-      <div className="flex items-center gap-2 min-w-0">
+      <div className="flex items-center gap-2.5 min-w-0">
         {onBack ? (
           <button
             onClick={onBack}
-            className="p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800/80 transition active:scale-95 shrink-0"
+            className="min-w-[40px] min-h-[40px] rounded-xl text-[#0C1B2E] hover:bg-[#D5E6F7] transition active:scale-95 shrink-0 flex items-center justify-center cursor-pointer"
             title="Return to World Map"
           >
-            <ArrowLeft className="w-4 h-4" />
+            <ArrowLeft className="w-5 h-5" />
           </button>
         ) : (
-          <div className="w-6 h-6 rounded-md bg-indigo-600 flex items-center justify-center font-serif font-black text-white text-xs shrink-0">
+          <div className="w-8 h-8 rounded-xl bg-[#0369A1] flex items-center justify-center font-serif font-black text-[#FFFFFF] text-base shrink-0 shadow-xs">
             ℕ
           </div>
         )}
 
         <div className="truncate">
-          <h1 className="text-xs font-bold text-white truncate">{title}</h1>
+          <h1 className="text-sm font-extrabold text-[#0C1B2E] truncate leading-tight">{title}</h1>
           {subtitle && (
-            <p className="text-[10px] text-slate-400 truncate">{subtitle}</p>
+            <p className="text-xs text-[#36506B] truncate leading-tight font-medium">{subtitle}</p>
           )}
         </div>
       </div>
@@ -72,32 +72,32 @@ export const Header: React.FC<HeaderProps> = ({
         {onOpenBriefing && (
           <button
             onClick={onOpenBriefing}
-            className="p-1.5 rounded-lg text-sky-400 hover:bg-sky-950/40 transition active:scale-95"
+            className="min-w-[38px] min-h-[38px] rounded-xl text-[#0369A1] hover:bg-[#D5E6F7] transition active:scale-95 flex items-center justify-center cursor-pointer"
             title="View Story & Briefing"
           >
-            <Info className="w-4 h-4" />
+            <Info className="w-5 h-5" />
           </button>
         )}
 
         {onOpenHints && (
           <button
             onClick={onOpenHints}
-            className="p-1.5 rounded-lg text-amber-400 hover:bg-amber-950/40 transition active:scale-95"
+            className="min-w-[38px] min-h-[38px] rounded-xl text-[#0284C7] hover:bg-[#D5E6F7] transition active:scale-95 flex items-center justify-center cursor-pointer"
             title="Get Hints"
           >
-            <Lightbulb className="w-4 h-4" />
+            <Lightbulb className="w-5 h-5" />
           </button>
         )}
 
         {onOpenCodex && (
           <button
             onClick={onOpenCodex}
-            className="relative p-1.5 rounded-lg text-indigo-400 hover:bg-indigo-950/40 transition active:scale-95"
+            className="relative min-w-[38px] min-h-[38px] rounded-xl text-[#0369A1] hover:bg-[#D5E6F7] transition active:scale-95 flex items-center justify-center cursor-pointer"
             title="Open Theorem Codex"
           >
-            <BookOpen className="w-4 h-4" />
+            <BookOpen className="w-5 h-5" />
             {unlockedCount > 0 && (
-              <span className="absolute -top-0.5 -right-0.5 w-3.5 h-3.5 rounded-full bg-indigo-500 text-white text-[8px] font-bold flex items-center justify-center font-mono">
+              <span className="absolute -top-0.5 -right-0.5 min-w-[18px] h-[18px] px-1 rounded-full bg-[#0369A1] text-[#FFFFFF] text-[10px] font-bold flex items-center justify-center font-mono">
                 {unlockedCount}
               </span>
             )}
@@ -106,20 +106,20 @@ export const Header: React.FC<HeaderProps> = ({
 
         <button
           onClick={onToggleSound}
-          className="p-1.5 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 transition active:scale-95"
+          className="min-w-[38px] min-h-[38px] rounded-xl text-[#36506B] hover:text-[#0C1B2E] hover:bg-[#D5E6F7] transition active:scale-95 flex items-center justify-center cursor-pointer"
           title={soundEnabled ? 'Mute Audio' : 'Enable Audio'}
         >
-          {soundEnabled ? <Volume2 className="w-4 h-4" /> : <VolumeX className="w-4 h-4 text-slate-600" />}
+          {soundEnabled ? <Volume2 className="w-5 h-5" /> : <VolumeX className="w-5 h-5 text-[#6E87A0]" />}
         </button>
 
         {/* Freeplay Sandbox Button */}
         {onOpenFreeplay && (
           <button
             onClick={onOpenFreeplay}
-            className="px-2 py-1 rounded-lg bg-purple-950/60 border border-purple-500/40 text-purple-300 hover:bg-purple-900/60 text-[10px] font-semibold flex items-center gap-1 transition active:scale-95 ml-0.5"
+            className="px-2.5 min-h-[36px] rounded-xl bg-[#EAF2FF] border border-[#93C5FD] text-[#1D4ED8] hover:bg-[#DBEAFE] text-xs font-bold flex items-center gap-1 transition active:scale-95 ml-0.5 cursor-pointer"
             title="Open Freeplay Sandbox"
           >
-            <Sparkles className="w-3 h-3 text-purple-400" />
+            <Sparkles className="w-3.5 h-3.5 text-[#1D4ED8]" />
             <span>Freeplay</span>
           </button>
         )}
@@ -128,10 +128,10 @@ export const Header: React.FC<HeaderProps> = ({
         {onOpenSettings && (
           <button
             onClick={onOpenSettings}
-            className="p-1.5 rounded-lg text-slate-400 hover:text-slate-200 hover:bg-slate-800/60 transition active:scale-95"
+            className="min-w-[38px] min-h-[38px] rounded-xl text-[#36506B] hover:text-[#0C1B2E] hover:bg-[#D5E6F7] transition active:scale-95 flex items-center justify-center cursor-pointer"
             title="Game Settings"
           >
-            <Settings className="w-4 h-4" />
+            <Settings className="w-5 h-5" />
           </button>
         )}
 
@@ -139,11 +139,11 @@ export const Header: React.FC<HeaderProps> = ({
         {!isStandaloneOrNative() && (
           <button
             onClick={onOpenAndroidInstall}
-            className="px-2 py-1 rounded-lg bg-emerald-950/60 border border-emerald-600/40 text-emerald-300 hover:bg-emerald-900/60 text-[10px] font-semibold flex items-center gap-1 transition active:scale-95 ml-0.5"
+            className="px-2.5 min-h-[36px] rounded-xl bg-[#F1F5F9] border border-[#CBD5E1] text-[#334155] hover:bg-[#E2E8F0] text-xs font-bold flex items-center gap-1 transition active:scale-95 ml-0.5 cursor-pointer"
             title="Install Android App or Export APK"
           >
-            <Smartphone className="w-3 h-3 text-emerald-400" />
-            <span>Android</span>
+            <Smartphone className="w-3.5 h-3.5 text-[#475569]" />
+            <span>App</span>
           </button>
         )}
       </div>

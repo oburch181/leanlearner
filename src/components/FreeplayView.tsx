@@ -170,7 +170,7 @@ export const FreeplayView: React.FC<FreeplayViewProps> = ({
         particleCount: 60,
         spread: 70,
         origin: { y: 0.6 },
-        colors: ['#818cf8', '#38bdf8', '#34d399', '#f59e0b', '#ec4899'],
+        colors: ['#0284C7', '#38BDF8', '#0EA5E9', '#1D4ED8', '#94A3B8'],
       });
     }
   }, [proofResult.isComplete, completedCelebrated, proofCode, soundEnabled, hapticsEnabled]);
@@ -214,7 +214,7 @@ export const FreeplayView: React.FC<FreeplayViewProps> = ({
   };
 
   return (
-    <div className="w-full flex-1 flex flex-col bg-slate-950 overflow-hidden">
+    <div className="w-full flex-1 flex flex-col bg-[#F4F8FC] overflow-hidden">
       {/* Freeplay App Bar */}
       <Header
         title="Lean 4 Freeplay"
@@ -229,15 +229,15 @@ export const FreeplayView: React.FC<FreeplayViewProps> = ({
       />
 
       {/* Main Freeplay Workspace */}
-      <div className="flex-1 flex flex-col p-2.5 space-y-2 overflow-y-auto no-scrollbar">
+      <div className="flex-1 flex flex-col p-3 space-y-2.5 overflow-y-auto no-scrollbar">
         {/* Active Theorem Card with Edit & Presets */}
-        <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-2.5 flex items-center justify-between shadow-sm shrink-0">
-          <div className="min-w-0 flex-1 pr-2">
-            <div className="flex items-center gap-1.5 text-[10px] text-indigo-400 font-semibold uppercase tracking-wider">
-              <Sparkles className="w-3 h-3 text-indigo-400" />
+        <div className="bg-[#FFFFFF] border border-[#C5D8EC] rounded-2xl p-3 flex items-center justify-between gap-2 shadow-xs shrink-0">
+          <div className="min-w-0 flex-1">
+            <div className="flex items-center gap-1.5 text-xs text-[#1D4ED8] font-bold uppercase tracking-wider">
+              <Sparkles className="w-3.5 h-3.5 text-[#1D4ED8]" />
               <span>Target Theorem</span>
             </div>
-            <div className="font-mono text-xs text-emerald-300 font-bold truncate mt-0.5">
+            <div className="font-mono text-sm text-[#334155] font-bold truncate mt-0.5">
               {currentStatement}
             </div>
           </div>
@@ -248,20 +248,20 @@ export const FreeplayView: React.FC<FreeplayViewProps> = ({
                 setInputStatement(currentStatement);
                 setIsEditModalOpen(true);
               }}
-              className="px-2.5 py-1 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700 text-xs font-medium flex items-center gap-1 transition active:scale-95"
+              className="px-3 min-h-[38px] rounded-xl bg-[#E6F0FA] hover:bg-[#D5E6F7] text-[#0C1B2E] border border-[#A8C4E0] text-xs font-bold flex items-center gap-1.5 transition active:scale-95 cursor-pointer"
               title="Edit theorem or choose preset"
             >
-              <Pencil className="w-3 h-3 text-indigo-400" />
-              <span>New / Presets</span>
+              <Pencil className="w-3.5 h-3.5 text-[#0369A1]" />
+              <span>Presets</span>
             </button>
 
             {savedTheorems.length > 0 && (
               <button
                 onClick={() => setIsLibraryOpen(true)}
-                className="p-1 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-300 border border-slate-700"
+                className="min-w-[38px] min-h-[38px] rounded-xl bg-[#E6F0FA] hover:bg-[#D5E6F7] text-[#0284C7] border border-[#A8C4E0] flex items-center justify-center cursor-pointer"
                 title="Saved custom theorems"
               >
-                <FolderOpen className="w-4 h-4 text-amber-400" />
+                <FolderOpen className="w-4 h-4" />
               </button>
             )}
           </div>
@@ -279,40 +279,40 @@ export const FreeplayView: React.FC<FreeplayViewProps> = ({
 
         {/* Celebratory Victory Bar for Freeplay */}
         {proofResult.isComplete && (
-          <div className="p-3 rounded-2xl bg-gradient-to-r from-emerald-950/70 via-indigo-950/60 to-slate-900 border border-emerald-500/50 flex items-center justify-between shadow-lg animate-fade-in shrink-0">
+          <div className="p-3.5 rounded-2xl bg-[#F1F5F9] border border-[#CBD5E1] flex items-center justify-between gap-2 shadow-sm animate-fade-in shrink-0">
             <div className="flex items-center gap-2.5 min-w-0">
-              <div className="w-8 h-8 rounded-full bg-emerald-500/20 border border-emerald-400 flex items-center justify-center shrink-0">
-                <CheckCircle2 className="w-5 h-5 text-emerald-400" />
+              <div className="w-9 h-9 rounded-full bg-[#475569] flex items-center justify-center shrink-0">
+                <CheckCircle2 className="w-5 h-5 text-[#FFFFFF]" />
               </div>
-              <div className="truncate">
-                <h4 className="text-xs font-bold text-emerald-300 truncate">Proof Formally Verified!</h4>
-                <p className="text-[10px] text-slate-300">Closed using Lean 4 Peano axioms.</p>
+              <div className="min-w-0">
+                <h4 className="text-sm font-extrabold text-[#334155] truncate">Proof Formally Verified!</h4>
+                <p className="text-xs text-[#475569] truncate">Closed using Lean 4 Peano axioms.</p>
               </div>
             </div>
 
-            <div className="flex items-center gap-1.5 shrink-0 ml-2">
+            <div className="flex items-center gap-1.5 shrink-0">
               <button
                 onClick={handleSaveTheorem}
                 disabled={isSaved}
-                className="px-2.5 py-1.5 rounded-xl bg-emerald-600 hover:bg-emerald-500 text-white font-bold text-xs flex items-center gap-1 shadow-md transition active:scale-95"
+                className="px-3 min-h-[40px] rounded-xl bg-[#0369A1] hover:bg-[#075985] text-[#FFFFFF] font-bold text-xs flex items-center gap-1.5 shadow-xs transition active:scale-95 cursor-pointer"
               >
-                {isSaved ? <Check className="w-3.5 h-3.5" /> : <BookMarked className="w-3.5 h-3.5" />}
-                <span>{isSaved ? 'Saved!' : 'Save Theorem'}</span>
+                {isSaved ? <Check className="w-4 h-4" /> : <BookMarked className="w-4 h-4" />}
+                <span>{isSaved ? 'Saved!' : 'Save'}</span>
               </button>
 
               <button
                 onClick={handleCopyCode}
-                className="p-1.5 rounded-xl bg-slate-800 hover:bg-slate-700 text-slate-200 border border-slate-700"
+                className="min-w-[40px] min-h-[40px] rounded-xl bg-[#FFFFFF] hover:bg-[#E6F0FA] text-[#0C1B2E] border border-[#CBD5E1] flex items-center justify-center cursor-pointer"
                 title="Copy Lean 4 Source"
               >
-                {copiedCode ? <Check className="w-3.5 h-3.5 text-emerald-400" /> : <Copy className="w-3.5 h-3.5" />}
+                {copiedCode ? <Check className="w-4 h-4 text-[#475569]" /> : <Copy className="w-4 h-4" />}
               </button>
             </div>
           </div>
         )}
 
         {/* Lean Code Editor */}
-        <div className="flex-1 min-h-[140px] flex flex-col">
+        <div className="flex-1 min-h-[150px] flex flex-col">
           <LeanEditor
             ref={editorRef}
             code={proofCode}
@@ -340,31 +340,31 @@ export const FreeplayView: React.FC<FreeplayViewProps> = ({
 
       {/* New Theorem / Presets Modal */}
       {isEditModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 bg-black/75 backdrop-blur-sm animate-fade-in">
-          <div className="w-full max-w-md bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl flex flex-col max-h-[85vh] overflow-hidden">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 bg-[#0C1B2E]/45 backdrop-blur-xs animate-fade-in">
+          <div className="w-full max-w-md bg-[#F4F8FC] border border-[#A8C4E0] rounded-3xl shadow-2xl flex flex-col max-h-[88vh] overflow-hidden">
             {/* Header */}
-            <div className="px-4 py-3 bg-slate-950 border-b border-slate-800 flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <div className="w-7 h-7 rounded-lg bg-indigo-500/20 border border-indigo-400/30 flex items-center justify-center">
-                  <Sparkles className="w-4 h-4 text-indigo-400" />
+            <div className="px-4 py-3.5 bg-[#E6F0FA] border-b border-[#C5D8EC] flex items-center justify-between">
+              <div className="flex items-center gap-2.5">
+                <div className="w-9 h-9 rounded-xl bg-[#E0F2FE] border border-[#7DD3FC] flex items-center justify-center">
+                  <Sparkles className="w-5 h-5 text-[#0369A1]" />
                 </div>
                 <div>
-                  <h3 className="text-sm font-bold text-white">Theorem Sandbox</h3>
-                  <p className="text-[10px] text-slate-400">Configure or choose any mathematical identity</p>
+                  <h3 className="text-base font-extrabold text-[#0C1B2E]">Theorem Sandbox</h3>
+                  <p className="text-xs text-[#36506B]">Configure or pick any identity</p>
                 </div>
               </div>
               <button
                 onClick={() => setIsEditModalOpen(false)}
-                className="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800 transition"
+                className="min-w-[40px] min-h-[40px] rounded-xl text-[#36506B] hover:text-[#0C1B2E] hover:bg-[#D5E6F7] transition flex items-center justify-center cursor-pointer"
               >
-                <X className="w-4 h-4" />
+                <X className="w-5 h-5" />
               </button>
             </div>
 
             <div className="flex-1 overflow-y-auto p-4 space-y-4 no-scrollbar">
               {/* Custom Header Input */}
-              <div className="space-y-1.5">
-                <label className="text-xs font-semibold text-slate-200">
+              <div className="space-y-2">
+                <label className="text-sm font-bold text-[#0C1B2E]">
                   Custom Lean 4 Theorem Declaration
                 </label>
                 <input
@@ -372,17 +372,17 @@ export const FreeplayView: React.FC<FreeplayViewProps> = ({
                   value={inputStatement}
                   onChange={(e) => setInputStatement(e.target.value)}
                   placeholder="theorem my_id (a b : ℕ) : a + b = b + a"
-                  className="w-full bg-slate-950 border border-slate-800 rounded-xl px-3 py-2 text-xs font-mono text-emerald-300 focus:outline-none focus:border-indigo-500"
+                  className="w-full bg-[#FFFFFF] border border-[#A8C4E0] rounded-xl px-3.5 py-2.5 text-sm font-mono text-[#334155] font-semibold focus:outline-none focus:border-[#0369A1]"
                 />
-                <p className="text-[10px] text-slate-400">
-                  You can type a full Lean statement (e.g. <code>theorem test (x y : ℕ) : x + y = y + x</code>) or a plain equation (e.g. <code>a + 0 = a</code>).
+                <p className="text-xs text-[#36506B] leading-relaxed">
+                  Type a full Lean statement (e.g. <code className="font-mono font-bold text-[#0C1B2E]">theorem test (x y : ℕ) : x + y = y + x</code>) or a plain equation (e.g. <code className="font-mono font-bold text-[#0C1B2E]">a + 0 = a</code>).
                 </p>
 
                 <button
                   onClick={() => {
                     handleApplyPreset(inputStatement.trim() || 'example (a : ℕ) : a + 0 = a');
                   }}
-                  className="w-full mt-2 py-2 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs flex items-center justify-center gap-1.5 transition active:scale-98 shadow-md"
+                  className="w-full min-h-[44px] mt-1 py-2.5 rounded-xl bg-[#0369A1] hover:bg-[#075985] text-[#FFFFFF] font-bold text-sm flex items-center justify-center gap-2 transition active:scale-[0.98] shadow-sm cursor-pointer"
                 >
                   <Check className="w-4 h-4" />
                   <span>Set as Active Goal</span>
@@ -390,26 +390,26 @@ export const FreeplayView: React.FC<FreeplayViewProps> = ({
               </div>
 
               {/* Presets List */}
-              <div className="space-y-2 pt-2 border-t border-slate-800/80">
-                <div className="text-xs font-bold uppercase tracking-wider text-slate-400">
+              <div className="space-y-2.5 pt-3 border-t border-[#C5D8EC]">
+                <div className="text-xs font-bold uppercase tracking-wider text-[#36506B]">
                   Explore Curated Challenges
                 </div>
 
-                <div className="space-y-1.5">
+                <div className="space-y-2">
                   {FREEPLAY_PRESETS.map((preset) => (
                     <button
                       key={preset.name}
                       onClick={() => handleApplyPreset(preset.statement)}
-                      className="w-full p-2.5 rounded-xl bg-slate-950/70 border border-slate-800/80 hover:border-indigo-500/50 hover:bg-slate-800/40 text-left transition active:scale-98"
+                      className="w-full p-3.5 rounded-2xl bg-[#FFFFFF] border border-[#C5D8EC] hover:border-[#0369A1] hover:bg-[#F0F7FF] text-left transition active:scale-[0.99] cursor-pointer"
                     >
-                      <div className="flex items-center justify-between">
-                        <span className="text-xs font-bold text-white">{preset.title}</span>
-                        <span className="text-[10px] font-mono text-indigo-400">Load →</span>
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="text-sm font-extrabold text-[#0C1B2E]">{preset.title}</span>
+                        <span className="text-xs font-mono font-bold text-[#0369A1] shrink-0">Load →</span>
                       </div>
-                      <div className="font-mono text-[11px] text-emerald-300 truncate mt-0.5">
+                      <div className="font-mono text-xs text-[#334155] font-semibold truncate mt-1">
                         {preset.statement}
                       </div>
-                      <div className="text-[10px] text-slate-400 mt-1">
+                      <div className="text-xs text-[#36506B] mt-1 leading-snug">
                         {preset.description}
                       </div>
                     </button>
@@ -423,30 +423,30 @@ export const FreeplayView: React.FC<FreeplayViewProps> = ({
 
       {/* Saved Custom Theorems Library Modal */}
       {isLibraryOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 bg-black/75 backdrop-blur-sm animate-fade-in">
-          <div className="w-full max-w-md bg-slate-900 border border-slate-800 rounded-2xl shadow-2xl flex flex-col max-h-[80vh] overflow-hidden">
-            <div className="px-4 py-3 bg-slate-950 border-b border-slate-800 flex items-center justify-between">
-              <div className="flex items-center gap-2">
-                <FolderOpen className="w-4 h-4 text-amber-400" />
-                <h3 className="text-sm font-bold text-white">My Proved Theorems ({savedTheorems.length})</h3>
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 bg-[#0C1B2E]/45 backdrop-blur-xs animate-fade-in">
+          <div className="w-full max-w-md bg-[#F4F8FC] border border-[#A8C4E0] rounded-3xl shadow-2xl flex flex-col max-h-[82vh] overflow-hidden">
+            <div className="px-4 py-3.5 bg-[#E6F0FA] border-b border-[#C5D8EC] flex items-center justify-between">
+              <div className="flex items-center gap-2.5">
+                <FolderOpen className="w-5 h-5 text-[#0284C7]" />
+                <h3 className="text-base font-extrabold text-[#0C1B2E]">My Proved Theorems ({savedTheorems.length})</h3>
               </div>
               <button
                 onClick={() => setIsLibraryOpen(false)}
-                className="p-1 rounded-lg text-slate-400 hover:text-white hover:bg-slate-800"
+                className="min-w-[40px] min-h-[40px] rounded-xl text-[#36506B] hover:text-[#0C1B2E] hover:bg-[#D5E6F7] flex items-center justify-center cursor-pointer"
               >
-                <X className="w-4 h-4" />
+                <X className="w-5 h-5" />
               </button>
             </div>
 
-            <div className="flex-1 overflow-y-auto p-4 space-y-2 no-scrollbar">
+            <div className="flex-1 overflow-y-auto p-4 space-y-2.5 no-scrollbar">
               {savedTheorems.map((thm) => (
                 <div
                   key={thm.id}
-                  className="p-3 rounded-xl bg-slate-950 border border-slate-800 flex items-center justify-between gap-2"
+                  className="p-3.5 rounded-2xl bg-[#FFFFFF] border border-[#C5D8EC] flex items-center justify-between gap-2.5"
                 >
                   <div className="min-w-0 flex-1">
-                    <div className="text-xs font-bold text-white truncate">{thm.name}</div>
-                    <div className="text-[10px] font-mono text-emerald-300 truncate mt-0.5">
+                    <div className="text-sm font-extrabold text-[#0C1B2E] truncate">{thm.name}</div>
+                    <div className="text-xs font-mono font-semibold text-[#334155] truncate mt-0.5">
                       {thm.statement}
                     </div>
                   </div>
@@ -466,7 +466,7 @@ export const FreeplayView: React.FC<FreeplayViewProps> = ({
                         setIsSaved(false);
                         setIsLibraryOpen(false);
                       }}
-                      className="px-2 py-1 rounded-lg bg-indigo-600/80 hover:bg-indigo-600 text-white text-[11px] font-medium"
+                      className="min-h-[38px] px-3 py-1.5 rounded-xl bg-[#0369A1] hover:bg-[#075985] text-[#FFFFFF] text-xs font-bold cursor-pointer"
                     >
                       Load
                     </button>
@@ -474,10 +474,10 @@ export const FreeplayView: React.FC<FreeplayViewProps> = ({
                     {onDeleteCustomTheorem && (
                       <button
                         onClick={() => onDeleteCustomTheorem(thm.id)}
-                        className="p-1 rounded-lg text-slate-500 hover:text-rose-400 hover:bg-rose-950/40"
+                        className="min-w-[38px] min-h-[38px] rounded-xl text-[#526D88] hover:text-[#991B1B] hover:bg-[#FEF2F2] flex items-center justify-center cursor-pointer"
                         title="Delete theorem"
                       >
-                        <Trash2 className="w-3.5 h-3.5" />
+                        <Trash2 className="w-4 h-4" />
                       </button>
                     )}
                   </div>

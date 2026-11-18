@@ -99,87 +99,84 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
   };
 
   return (
-    <div className="w-full flex-1 flex flex-col bg-slate-950 overflow-hidden">
+    <div className="w-full flex-1 flex flex-col bg-[#F4F8FC] overflow-hidden">
       {/* Settings Top Bar */}
-      <div className="h-12 w-full bg-slate-950/90 border-b border-slate-800/80 px-3 flex items-center justify-between shrink-0">
+      <div className="h-14 w-full bg-[#E6F0FA]/95 border-b border-[#C5D8EC] px-3 flex items-center justify-between shrink-0">
         <button
           onClick={onBack}
-          className="p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition flex items-center gap-1.5 text-xs active:scale-95 cursor-pointer"
+          className="min-h-[40px] px-2.5 rounded-xl text-[#0C1B2E] hover:bg-[#D5E6F7] transition flex items-center gap-1.5 text-sm font-semibold active:scale-95 cursor-pointer"
         >
-          <ArrowLeft className="w-4 h-4" />
+          <ArrowLeft className="w-5 h-5" />
           <span>Back</span>
         </button>
 
-        <h1 className="text-xs font-bold text-white tracking-wide">Settings</h1>
+        <h1 className="text-base font-extrabold text-[#0C1B2E] tracking-tight">Settings</h1>
 
-        <div className="w-8" />
+        <div className="w-16" />
       </div>
 
       {/* Settings Content */}
-      <div className="flex-1 overflow-y-auto p-4 space-y-4 no-scrollbar max-w-lg mx-auto w-full">
+      <div className="flex-1 overflow-y-auto p-4 space-y-5 no-scrollbar max-w-2xl mx-auto w-full">
         {/* Progression & Unlocks Section */}
-        <div className="space-y-2">
-          <div className="text-[11px] font-semibold uppercase tracking-wider text-indigo-400 px-1 flex items-center gap-1.5">
-            <Unlock className="w-3.5 h-3.5" />
+        <div className="space-y-2.5">
+          <div className="text-xs font-bold uppercase tracking-wider text-[#0369A1] px-1 flex items-center gap-1.5">
+            <Unlock className="w-4 h-4" />
             <span>Progression & Game Rules</span>
           </div>
 
-          <div className="bg-slate-900/90 border border-slate-800 rounded-2xl divide-y divide-slate-800/80 shadow-sm overflow-hidden">
+          <div className="bg-[#FFFFFF] border border-[#C5D8EC] rounded-2xl divide-y divide-[#D6E5F4] shadow-xs overflow-hidden">
             {/* Unlock All Tutorials / Levels */}
-            <div className="p-3.5 flex items-center justify-between gap-3">
-              <div className="space-y-0.5 min-w-0 flex-1">
-                <div className="flex items-center gap-2">
-                  <span className="text-xs font-bold text-white">Unlock All Tutorials & Worlds</span>
-                  {progress.unlockAllTutorials ? (
-                    <span className="px-1.5 py-0.2 rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/20 text-[9px]">
-                      All Unlocked
-                    </span>
-                  ) : (
-                    <span className="px-1.5 py-0.2 rounded-full bg-slate-800 text-slate-400 text-[9px]">
-                      Default: Progressive
-                    </span>
-                  )}
+            <div className="p-4 flex items-center justify-between gap-4">
+              <div className="space-y-1 min-w-0 flex-1">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="text-sm font-extrabold text-[#0C1B2E]">Unlock All Tutorials & Worlds</span>
+                  <span
+                    className={`text-xs font-bold ${
+                      progress.unlockAllTutorials ? 'text-[#0284C7]' : 'text-[#36506B]'
+                    }`}
+                  >
+                    · {progress.unlockAllTutorials ? 'All Unlocked' : 'Progressive'}
+                  </span>
                 </div>
-                <p className="text-[11px] text-slate-400 leading-relaxed font-sans">
-                  Instantly unlock all {totalWorlds} worlds and {totalLevels} proof levels without having to beat prior levels first.
+                <p className="text-sm text-[#36506B] leading-relaxed font-sans">
+                  Instantly unlock all {totalWorlds} worlds and {totalLevels} proof levels without beating prior levels first.
                 </p>
               </div>
 
-              {/* iOS / Android style toggle */}
               <button
                 type="button"
                 role="switch"
                 aria-checked={!!progress.unlockAllTutorials}
                 onClick={toggleUnlockAllTutorials}
-                className={`w-11 h-6 flex items-center rounded-full p-1 transition-colors duration-200 ease-in-out shrink-0 cursor-pointer ${
-                  progress.unlockAllTutorials ? 'bg-indigo-600' : 'bg-slate-700'
+                className={`w-13 h-7 flex items-center rounded-full p-1 transition-colors duration-200 ease-in-out shrink-0 cursor-pointer ${
+                  progress.unlockAllTutorials ? 'bg-[#0369A1]' : 'bg-[#A8C4E0]'
                 }`}
               >
                 <div
-                  className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-200 ease-in-out ${
-                    progress.unlockAllTutorials ? 'translate-x-5' : 'translate-x-0'
+                  className={`bg-[#FFFFFF] w-5 h-5 rounded-full shadow-sm transform transition-transform duration-200 ease-in-out ${
+                    progress.unlockAllTutorials ? 'translate-x-6' : 'translate-x-0'
                   }`}
                 />
               </button>
             </div>
 
             {/* Unlock All Tactics in Tutorials */}
-            <div className="p-3.5 flex items-center justify-between gap-3">
-              <div className="space-y-0.5 min-w-0 flex-1">
-                <div className="flex items-center gap-2">
-                  <span className="text-xs font-bold text-white">Unlock All Tactics Everywhere</span>
-                  {progress.unlockAllTactics ? (
-                    <span className="px-1.5 py-0.2 rounded-full bg-amber-500/10 text-amber-300 border border-amber-500/20 text-[9px]">
-                      All Tactics
-                    </span>
-                  ) : (
-                    <span className="px-1.5 py-0.2 rounded-full bg-slate-800 text-slate-400 text-[9px]">
-                      Default: Gated
-                    </span>
-                  )}
+            <div className="p-4 flex items-center justify-between gap-4">
+              <div className="space-y-1 min-w-0 flex-1">
+                <div className="flex flex-wrap items-center gap-2">
+                  <span className="text-sm font-extrabold text-[#0C1B2E]">Unlock All Tactics Everywhere</span>
+                  <span
+                    className={`text-xs font-bold ${
+                      progress.unlockAllTactics ? 'text-[#0284C7]' : 'text-[#36506B]'
+                    }`}
+                  >
+                    · {progress.unlockAllTactics ? 'All Active' : 'Gated'}
+                  </span>
                 </div>
-                <p className="text-[11px] text-slate-400 leading-relaxed font-sans">
-                  Enable all tactics (<code className="text-slate-300">rfl</code>, <code className="text-slate-300">rw</code>, <code className="text-slate-300">induction</code>, etc.) on the keyboard from Level 1 instead of unlocking step-by-step.
+                <p className="text-sm text-[#36506B] leading-relaxed font-sans">
+                  Enable every tactic (<code className="font-mono font-bold text-[#0C1B2E]">rfl</code>,{' '}
+                  <code className="font-mono font-bold text-[#0C1B2E]">rw</code>,{' '}
+                  <code className="font-mono font-bold text-[#0C1B2E]">induction</code>) on the keyboard from Level 1.
                 </p>
               </div>
 
@@ -188,13 +185,13 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                 role="switch"
                 aria-checked={!!progress.unlockAllTactics}
                 onClick={toggleUnlockAllTactics}
-                className={`w-11 h-6 flex items-center rounded-full p-1 transition-colors duration-200 ease-in-out shrink-0 cursor-pointer ${
-                  progress.unlockAllTactics ? 'bg-indigo-600' : 'bg-slate-700'
+                className={`w-13 h-7 flex items-center rounded-full p-1 transition-colors duration-200 ease-in-out shrink-0 cursor-pointer ${
+                  progress.unlockAllTactics ? 'bg-[#0369A1]' : 'bg-[#A8C4E0]'
                 }`}
               >
                 <div
-                  className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-200 ease-in-out ${
-                    progress.unlockAllTactics ? 'translate-x-5' : 'translate-x-0'
+                  className={`bg-[#FFFFFF] w-5 h-5 rounded-full shadow-sm transform transition-transform duration-200 ease-in-out ${
+                    progress.unlockAllTactics ? 'translate-x-6' : 'translate-x-0'
                   }`}
                 />
               </button>
@@ -203,22 +200,26 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
         </div>
 
         {/* Audio & Tactile Section */}
-        <div className="space-y-2">
-          <div className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 px-1 flex items-center gap-1.5">
-            <Volume2 className="w-3.5 h-3.5 text-slate-400" />
+        <div className="space-y-2.5">
+          <div className="text-xs font-bold uppercase tracking-wider text-[#36506B] px-1 flex items-center gap-1.5">
+            <Volume2 className="w-4 h-4 text-[#36506B]" />
             <span>Sound & Haptic Feedback</span>
           </div>
 
-          <div className="bg-slate-900/90 border border-slate-800 rounded-2xl divide-y divide-slate-800/80 shadow-sm overflow-hidden">
+          <div className="bg-[#FFFFFF] border border-[#C5D8EC] rounded-2xl divide-y divide-[#D6E5F4] shadow-xs overflow-hidden">
             {/* Audio */}
-            <div className="p-3.5 flex items-center justify-between gap-3">
-              <div className="space-y-0.5 min-w-0 flex-1">
-                <div className="text-xs font-bold text-white flex items-center gap-1.5">
-                  {progress.soundEnabled ? <Volume2 className="w-3.5 h-3.5 text-emerald-400" /> : <VolumeX className="w-3.5 h-3.5 text-slate-500" />}
+            <div className="p-4 flex items-center justify-between gap-4">
+              <div className="space-y-1 min-w-0 flex-1">
+                <div className="text-sm font-extrabold text-[#0C1B2E] flex items-center gap-2">
+                  {progress.soundEnabled ? (
+                    <Volume2 className="w-4 h-4 text-[#0369A1]" />
+                  ) : (
+                    <VolumeX className="w-4 h-4 text-[#6E87A0]" />
+                  )}
                   <span>Mathematical Sound Effects</span>
                 </div>
-                <p className="text-[11px] text-slate-400 font-sans">
-                  Synthesized harmonic chimes for tactic success and level completion fanfare.
+                <p className="text-sm text-[#36506B] font-sans leading-relaxed">
+                  Harmonic chimes for tactic success and level completion fanfare.
                 </p>
               </div>
 
@@ -227,27 +228,27 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                 role="switch"
                 aria-checked={progress.soundEnabled}
                 onClick={toggleSound}
-                className={`w-11 h-6 flex items-center rounded-full p-1 transition-colors duration-200 ease-in-out shrink-0 cursor-pointer ${
-                  progress.soundEnabled ? 'bg-indigo-600' : 'bg-slate-700'
+                className={`w-13 h-7 flex items-center rounded-full p-1 transition-colors duration-200 ease-in-out shrink-0 cursor-pointer ${
+                  progress.soundEnabled ? 'bg-[#0369A1]' : 'bg-[#A8C4E0]'
                 }`}
               >
                 <div
-                  className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-200 ease-in-out ${
-                    progress.soundEnabled ? 'translate-x-5' : 'translate-x-0'
+                  className={`bg-[#FFFFFF] w-5 h-5 rounded-full shadow-sm transform transition-transform duration-200 ease-in-out ${
+                    progress.soundEnabled ? 'translate-x-6' : 'translate-x-0'
                   }`}
                 />
               </button>
             </div>
 
             {/* Haptics */}
-            <div className="p-3.5 flex items-center justify-between gap-3">
-              <div className="space-y-0.5 min-w-0 flex-1">
-                <div className="text-xs font-bold text-white flex items-center gap-1.5">
-                  <Vibrate className="w-3.5 h-3.5 text-sky-400" />
+            <div className="p-4 flex items-center justify-between gap-4">
+              <div className="space-y-1 min-w-0 flex-1">
+                <div className="text-sm font-extrabold text-[#0C1B2E] flex items-center gap-2">
+                  <Vibrate className="w-4 h-4 text-[#0369A1]" />
                   <span>Haptic Vibration</span>
                 </div>
-                <p className="text-[11px] text-slate-400 font-sans">
-                  Tactile feedback when tapping Lean tactics, math symbols, and completing proofs.
+                <p className="text-sm text-[#36506B] font-sans leading-relaxed">
+                  Tactile feedback when tapping Lean tactics, symbols, and completing proofs.
                 </p>
               </div>
 
@@ -256,13 +257,13 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
                 role="switch"
                 aria-checked={progress.hapticsEnabled}
                 onClick={toggleHaptics}
-                className={`w-11 h-6 flex items-center rounded-full p-1 transition-colors duration-200 ease-in-out shrink-0 cursor-pointer ${
-                  progress.hapticsEnabled ? 'bg-indigo-600' : 'bg-slate-700'
+                className={`w-13 h-7 flex items-center rounded-full p-1 transition-colors duration-200 ease-in-out shrink-0 cursor-pointer ${
+                  progress.hapticsEnabled ? 'bg-[#0369A1]' : 'bg-[#A8C4E0]'
                 }`}
               >
                 <div
-                  className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-200 ease-in-out ${
-                    progress.hapticsEnabled ? 'translate-x-5' : 'translate-x-0'
+                  className={`bg-[#FFFFFF] w-5 h-5 rounded-full shadow-sm transform transition-transform duration-200 ease-in-out ${
+                    progress.hapticsEnabled ? 'translate-x-6' : 'translate-x-0'
                   }`}
                 />
               </button>
@@ -271,16 +272,16 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
         </div>
 
         {/* Display Section */}
-        <div className="space-y-2">
-          <div className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 px-1 flex items-center gap-1.5">
-            <Smartphone className="w-3.5 h-3.5 text-slate-400" />
+        <div className="space-y-2.5">
+          <div className="text-xs font-bold uppercase tracking-wider text-[#36506B] px-1 flex items-center gap-1.5">
+            <Smartphone className="w-4 h-4 text-[#36506B]" />
             <span>Display & Viewport</span>
           </div>
 
-          <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-3.5 shadow-sm flex items-center justify-between gap-3">
-            <div className="space-y-0.5 min-w-0 flex-1">
-              <span className="text-xs font-bold text-white">Android Device Frame</span>
-              <p className="text-[11px] text-slate-400 font-sans">
+          <div className="bg-[#FFFFFF] border border-[#C5D8EC] rounded-2xl p-4 shadow-xs flex items-center justify-between gap-4">
+            <div className="space-y-1 min-w-0 flex-1">
+              <span className="text-sm font-extrabold text-[#0C1B2E]">Android Device Frame</span>
+              <p className="text-sm text-[#36506B] font-sans leading-relaxed">
                 Renders a Google Pixel phone shell on wide desktop screens. Turn off for full-bleed.
               </p>
             </div>
@@ -290,13 +291,13 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
               role="switch"
               aria-checked={progress.mobileFrameMode}
               onClick={toggleFrameMode}
-              className={`w-11 h-6 flex items-center rounded-full p-1 transition-colors duration-200 ease-in-out shrink-0 cursor-pointer ${
-                progress.mobileFrameMode ? 'bg-indigo-600' : 'bg-slate-700'
+              className={`w-13 h-7 flex items-center rounded-full p-1 transition-colors duration-200 ease-in-out shrink-0 cursor-pointer ${
+                progress.mobileFrameMode ? 'bg-[#0369A1]' : 'bg-[#A8C4E0]'
               }`}
             >
               <div
-                className={`bg-white w-4 h-4 rounded-full shadow-md transform transition-transform duration-200 ease-in-out ${
-                  progress.mobileFrameMode ? 'translate-x-5' : 'translate-x-0'
+                className={`bg-[#FFFFFF] w-5 h-5 rounded-full shadow-sm transform transition-transform duration-200 ease-in-out ${
+                  progress.mobileFrameMode ? 'translate-x-6' : 'translate-x-0'
                 }`}
               />
             </button>
@@ -304,50 +305,54 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
         </div>
 
         {/* Data & Backup Section */}
-        <div className="space-y-2">
-          <div className="text-[11px] font-semibold uppercase tracking-wider text-slate-400 px-1">
+        <div className="space-y-2.5">
+          <div className="text-xs font-bold uppercase tracking-wider text-[#36506B] px-1">
             Data & Backup
           </div>
 
-          <div className="bg-slate-900/90 border border-slate-800 rounded-2xl p-3 space-y-2.5">
+          <div className="bg-[#FFFFFF] border border-[#C5D8EC] rounded-2xl p-3.5 space-y-2.5 shadow-xs">
             <button
               onClick={handleExportBackup}
-              className="w-full py-2 px-3 rounded-xl bg-slate-800/80 hover:bg-slate-800 text-slate-200 border border-slate-700 text-xs font-medium flex items-center justify-between transition active:scale-98 cursor-pointer"
+              className="w-full min-h-[46px] py-2.5 px-3.5 rounded-xl bg-[#E6F0FA] hover:bg-[#D5E6F7] text-[#0C1B2E] border border-[#A8C4E0] text-sm font-bold flex items-center justify-between transition active:scale-[0.99] cursor-pointer"
             >
-              <div className="flex items-center gap-2">
-                {copiedBackup ? <Check className="w-4 h-4 text-emerald-400" /> : <Copy className="w-4 h-4 text-indigo-400" />}
-                <span>{copiedBackup ? 'Progress Copied to Clipboard!' : 'Export Game Save & Custom Theorems'}</span>
+              <div className="flex items-center gap-2.5">
+                {copiedBackup ? (
+                  <Check className="w-4 h-4 text-[#475569]" />
+                ) : (
+                  <Copy className="w-4 h-4 text-[#0369A1]" />
+                )}
+                <span>{copiedBackup ? 'Progress Copied to Clipboard!' : 'Export Save & Custom Theorems'}</span>
               </div>
-              <span className="text-[10px] text-slate-400 font-mono">JSON</span>
+              <span className="text-xs text-[#36506B] font-mono font-bold">JSON</span>
             </button>
 
             {!showResetConfirm ? (
               <button
                 onClick={() => setShowResetConfirm(true)}
-                className="w-full py-2 px-3 rounded-xl bg-rose-950/20 hover:bg-rose-950/40 text-rose-300 border border-rose-900/40 text-xs font-medium flex items-center justify-between transition active:scale-98 cursor-pointer"
+                className="w-full min-h-[46px] py-2.5 px-3.5 rounded-xl bg-[#FEF2F2] hover:bg-[#FEE2E2] text-[#991B1B] border border-[#FECACA] text-sm font-bold flex items-center justify-between transition active:scale-[0.99] cursor-pointer"
               >
-                <div className="flex items-center gap-2">
-                  <RotateCcw className="w-4 h-4 text-rose-400" />
+                <div className="flex items-center gap-2.5">
+                  <RotateCcw className="w-4 h-4 text-[#B91C1C]" />
                   <span>Reset All Proof Progress</span>
                 </div>
-                <span className="text-[10px] text-rose-400">Clear</span>
+                <span className="text-xs text-[#B91C1C] font-bold">Clear</span>
               </button>
             ) : (
-              <div className="p-3 rounded-xl bg-rose-950/50 border border-rose-800/60 space-y-2 animate-fade-in">
-                <div className="flex items-center gap-2 text-xs font-bold text-rose-200">
-                  <ShieldAlert className="w-4 h-4 text-rose-400 shrink-0" />
-                  <span>Are you sure? This will reset all completed levels.</span>
+              <div className="p-3.5 rounded-xl bg-[#FEF2F2] border border-[#FECACA] space-y-2.5 animate-fade-in">
+                <div className="flex items-center gap-2 text-sm font-bold text-[#7F1D1D]">
+                  <ShieldAlert className="w-4 h-4 text-[#B91C1C] shrink-0" />
+                  <span>Reset all completed levels and saved proofs?</span>
                 </div>
-                <div className="flex items-center gap-2 pt-1">
+                <div className="flex items-center gap-2.5 pt-1">
                   <button
                     onClick={handleConfirmReset}
-                    className="flex-1 py-1.5 rounded-lg bg-rose-600 hover:bg-rose-500 text-white font-bold text-xs transition active:scale-95 cursor-pointer"
+                    className="flex-1 min-h-[42px] py-2 rounded-xl bg-[#991B1B] hover:bg-[#7F1D1D] text-[#FFFFFF] font-bold text-sm transition active:scale-95 cursor-pointer"
                   >
-                    Yes, Reset Progress
+                    Yes, Reset
                   </button>
                   <button
                     onClick={() => setShowResetConfirm(false)}
-                    className="flex-1 py-1.5 rounded-lg bg-slate-800 hover:bg-slate-700 text-slate-300 text-xs font-medium transition cursor-pointer"
+                    className="flex-1 min-h-[42px] py-2 rounded-xl bg-[#FFFFFF] hover:bg-[#E6F0FA] text-[#0C1B2E] border border-[#A8C4E0] text-sm font-bold transition cursor-pointer"
                   >
                     Cancel
                   </button>
@@ -358,10 +363,10 @@ export const SettingsView: React.FC<SettingsViewProps> = ({
         </div>
 
         {/* Credits */}
-        <div className="p-3.5 rounded-2xl bg-slate-950 border border-slate-800/80 text-center space-y-1 text-slate-500 text-[11px]">
-          <p className="font-semibold text-slate-400">Natural Number Game (NNG4)</p>
+        <div className="p-4 rounded-2xl bg-[#E6F0FA]/70 border border-[#C5D8EC] text-center space-y-1 text-[#36506B] text-xs">
+          <p className="font-extrabold text-[#0C1B2E] text-sm">Natural Number Game (NNG4)</p>
           <p>Created by Kevin Buzzard and the Lean Theorem Proving Community.</p>
-          <p className="text-[10px] pt-1">Built as an Android Progressive Web App with offline Peano symbolic engine.</p>
+          <p className="pt-0.5">Offline Peano arithmetic engine for Android &amp; Mobile Web.</p>
         </div>
       </div>
     </div>

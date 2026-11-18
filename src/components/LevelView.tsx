@@ -138,7 +138,7 @@ export const LevelView: React.FC<LevelViewProps> = ({
         particleCount: 50,
         spread: 60,
         origin: { y: 0.6 },
-        colors: ['#38bdf8', '#818cf8', '#34d399', '#f59e0b'],
+        colors: ['#0284C7', '#38BDF8', '#0EA5E9', '#1D4ED8', '#94A3B8'],
       });
     } else if (res.error) {
       if (!isIncompleteTemplateLine(newCode, res.error.line)) {
@@ -159,10 +159,10 @@ export const LevelView: React.FC<LevelViewProps> = ({
   };
 
   return (
-    <div className="w-full flex-1 flex flex-col bg-slate-950 overflow-hidden">
+    <div className="w-full flex-1 flex flex-col bg-[#F4F8FC] overflow-hidden">
       {/* App Bar */}
       <Header
-        title={`${world.name} • Lvl ${level.number}`}
+        title={`${world.name} · Lvl ${level.number}`}
         subtitle={level.name}
         onBack={onBackToMap}
         onOpenBriefing={onOpenBriefing}
@@ -176,21 +176,21 @@ export const LevelView: React.FC<LevelViewProps> = ({
       />
 
       {/* Main Proof Lab Workspace */}
-      <div className="flex-1 flex flex-col p-2.5 space-y-2 overflow-y-auto no-scrollbar">
-        {/* Compact Level Goal Bar with quick Briefing button */}
-        <div className="bg-slate-900/90 border border-slate-800 rounded-xl px-3 py-1.5 flex items-center justify-between shrink-0 shadow-sm">
-          <div className="flex items-center gap-2 truncate">
-            <span className="font-mono text-xs text-emerald-300 font-semibold truncate">
+      <div className="flex-1 flex flex-col p-3 space-y-2.5 overflow-y-auto no-scrollbar">
+        {/* Level Goal Bar with quick Briefing button */}
+        <div className="bg-[#FFFFFF] border border-[#C5D8EC] rounded-2xl px-3.5 py-2 flex items-center justify-between gap-2 shrink-0 shadow-xs">
+          <div className="flex items-center gap-2 min-w-0">
+            <span className="font-mono text-sm text-[#334155] font-bold truncate">
               {level.statement}
             </span>
           </div>
 
           <button
             onClick={onOpenBriefing}
-            className="flex items-center gap-1 text-[11px] font-medium text-sky-400 hover:text-sky-300 bg-sky-950/40 border border-sky-800/40 px-2 py-0.5 rounded-lg shrink-0 ml-2 active:scale-95 transition"
+            className="flex items-center gap-1.5 text-xs font-bold text-[#0369A1] hover:bg-[#BAE6FD] bg-[#E0F2FE] border border-[#7DD3FC] px-2.5 min-h-[34px] rounded-xl shrink-0 active:scale-95 transition cursor-pointer"
             title="Open Story & Briefing"
           >
-            <Info className="w-3 h-3" />
+            <Info className="w-3.5 h-3.5" />
             <span>Story</span>
           </button>
         </div>
@@ -207,21 +207,21 @@ export const LevelView: React.FC<LevelViewProps> = ({
 
         {/* Level Complete Action Card */}
         {proofResult.isComplete && (
-          <div className="p-3 rounded-xl bg-gradient-to-r from-emerald-950/60 to-indigo-950/60 border border-emerald-500/50 flex items-center justify-between shadow-lg animate-fade-in shrink-0">
-            <div className="flex items-center gap-2">
-              <div className="w-8 h-8 rounded-full bg-emerald-500/20 border border-emerald-400 flex items-center justify-center">
-                <CheckCircle2 className="w-5 h-5 text-emerald-400" />
+          <div className="p-3.5 rounded-2xl bg-[#F1F5F9] border border-[#CBD5E1] flex items-center justify-between gap-3 shadow-sm animate-fade-in shrink-0">
+            <div className="flex items-center gap-2.5 min-w-0">
+              <div className="w-9 h-9 rounded-full bg-[#475569] flex items-center justify-center shrink-0">
+                <CheckCircle2 className="w-5 h-5 text-[#FFFFFF]" />
               </div>
-              <div>
-                <h4 className="text-xs font-bold text-emerald-300">Theorem Mastered!</h4>
-                <p className="text-[10px] text-slate-300">Saved to Codex.</p>
+              <div className="min-w-0">
+                <h4 className="text-sm font-extrabold text-[#334155] truncate">Theorem Mastered!</h4>
+                <p className="text-xs text-[#475569] truncate">Saved to Codex.</p>
               </div>
             </div>
 
             {hasNextLevel ? (
               <button
                 onClick={onNextLevel}
-                className="px-3.5 py-1.5 rounded-xl bg-emerald-500 hover:bg-emerald-400 text-slate-950 font-bold text-xs flex items-center gap-1 shadow-md transition active:scale-95"
+                className="min-h-[42px] px-4 py-2 rounded-xl bg-[#0369A1] hover:bg-[#075985] text-[#FFFFFF] font-bold text-sm flex items-center gap-1 shadow-sm transition active:scale-95 shrink-0 cursor-pointer"
               >
                 <span>Next Level</span>
                 <ChevronRight className="w-4 h-4" />
@@ -229,7 +229,7 @@ export const LevelView: React.FC<LevelViewProps> = ({
             ) : (
               <button
                 onClick={onBackToMap}
-                className="px-3 py-1.5 rounded-xl bg-indigo-600 hover:bg-indigo-500 text-white font-bold text-xs flex items-center gap-1 transition active:scale-95"
+                className="min-h-[42px] px-4 py-2 rounded-xl bg-[#0369A1] hover:bg-[#075985] text-[#FFFFFF] font-bold text-sm flex items-center gap-1 transition active:scale-95 shrink-0 cursor-pointer"
               >
                 <span>World Map</span>
                 <ChevronRight className="w-4 h-4" />
@@ -239,7 +239,7 @@ export const LevelView: React.FC<LevelViewProps> = ({
         )}
 
         {/* Lean Editor */}
-        <div className="flex-1 min-h-[140px] flex flex-col">
+        <div className="flex-1 min-h-[150px] flex flex-col">
           <LeanEditor
             ref={editorRef}
             code={code}
@@ -252,35 +252,35 @@ export const LevelView: React.FC<LevelViewProps> = ({
         </div>
 
         {/* Navigation row: Prev / Next */}
-        <div className="flex items-center justify-between text-xs py-0.5 shrink-0">
+        <div className="flex items-center justify-between text-xs pt-0.5 shrink-0">
           <button
             onClick={onPrevLevel}
             disabled={!hasPrevLevel}
-            className={`flex items-center gap-1 px-2.5 py-1 rounded-lg border text-[11px] transition ${
+            className={`min-h-[38px] flex items-center gap-1 px-3 py-1.5 rounded-xl border text-xs font-bold transition ${
               hasPrevLevel
-                ? 'bg-slate-900 border-slate-800 text-slate-300 hover:bg-slate-800'
-                : 'opacity-30 pointer-events-none border-transparent'
+                ? 'bg-[#FFFFFF] border-[#A8C4E0] text-[#0C1B2E] hover:bg-[#E6F0FA] cursor-pointer'
+                : 'opacity-35 pointer-events-none border-transparent'
             }`}
           >
-            <ChevronLeft className="w-3.5 h-3.5" />
+            <ChevronLeft className="w-4 h-4" />
             <span>Prev</span>
           </button>
 
-          <span className="text-[10px] text-slate-500 font-mono">
-            {world.name} • {level.number}/{world.levels.length}
+          <span className="text-xs text-[#36506B] font-mono font-semibold">
+            {world.name} · {level.number}/{world.levels.length}
           </span>
 
           <button
             onClick={onNextLevel}
             disabled={!hasNextLevel}
-            className={`flex items-center gap-1 px-2.5 py-1 rounded-lg border text-[11px] transition ${
+            className={`min-h-[38px] flex items-center gap-1 px-3 py-1.5 rounded-xl border text-xs font-bold transition ${
               hasNextLevel
-                ? 'bg-slate-900 border-slate-800 text-slate-300 hover:bg-slate-800'
-                : 'opacity-30 pointer-events-none border-transparent'
+                ? 'bg-[#FFFFFF] border-[#A8C4E0] text-[#0C1B2E] hover:bg-[#E6F0FA] cursor-pointer'
+                : 'opacity-35 pointer-events-none border-transparent'
             }`}
           >
             <span>Next</span>
-            <ChevronRight className="w-3.5 h-3.5" />
+            <ChevronRight className="w-4 h-4" />
           </button>
         </div>
       </div>

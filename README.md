@@ -10,7 +10,7 @@ Once GitHub Pages is enabled in your repository (**Settings → Pages → Source
 
 * **Live GitHub Pages App**: [`https://<your-github-username>.github.io/<repo-name>/`](https://<your-github-username>.github.io/<repo-name>/)
 * **Direct Android APK Download**: [`https://<your-github-username>.github.io/<repo-name>/downloads/nng4-lean.apk`](https://<your-github-username>.github.io/<repo-name>/downloads/nng4-lean.apk)
-* **In-App Download**: Open the GitHub Pages URL on your phone, tap **Android** in the top-right header, and choose **Download `nng4-lean.apk`** (or **Install App to Home Screen** in Chrome).
+* **In-App Download**: Open the GitHub Pages URL on your phone, tap **App** in the top-right header, and choose **Download `nng4-lean.apk`** (or **Install App to Home Screen** in Chrome).
 
 > Replace `<your-github-username>` and `<repo-name>` above with your GitHub username and repository name after pushing. (If your repository is named `<your-github-username>.github.io`, the root URL is `https://<your-github-username>.github.io/`.)
 
@@ -72,3 +72,11 @@ npm run aab:release
 ```
 
 See **[ANDROID_PUBLISHING.md](./ANDROID_PUBLISHING.md)** for full keystore signing, GitHub Actions release secrets, and Google Play / Bubblewrap publishing instructions.
+
+---
+
+## License
+
+This project is open source and licensed under the **[MIT License](./LICENSE)**.
+
+Curriculum levels and mathematical structure are inspired by Kevin Buzzard and Jon Eugster's [**Natural Number Game 4 (NNG4)**](https://github.com/leanprover-community/NNG4) from the Lean Theorem Proving Community.

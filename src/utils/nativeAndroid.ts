@@ -24,8 +24,8 @@ export function isStandaloneOrNative(): boolean {
 export async function configureNativeAndroidUI(): Promise<void> {
   if (!isNativeAndroid()) return;
   try {
-    await StatusBar.setStyle({ style: Style.Dark });
-    await StatusBar.setBackgroundColor({ color: '#020617' });
+    await StatusBar.setStyle({ style: Style.Light });
+    await StatusBar.setBackgroundColor({ color: '#E6F0FA' });
     await StatusBar.setOverlaysWebView({ overlay: false });
   } catch {
     // Ignore status bar plugin errors in non-native environments

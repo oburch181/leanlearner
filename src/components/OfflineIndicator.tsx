@@ -22,8 +22,8 @@ export const OfflineIndicator: React.FC = () => {
   if (isOnline) return null;
 
   return (
-    <div className="bg-amber-950/90 border-b border-amber-700/50 px-3 py-1 flex items-center justify-center gap-1.5 text-[10px] font-medium text-amber-200 shrink-0">
-      <WifiOff className="w-3 h-3 text-amber-400 shrink-0" />
+    <div className="bg-[#E0F2FE] border-b border-[#7DD3FC] px-3 py-1.5 flex items-center justify-center gap-2 text-xs font-semibold text-[#075985] shrink-0">
+      <WifiOff className="w-3.5 h-3.5 text-[#0284C7] shrink-0" />
       <span>Offline Mode — Peano proof engine running locally</span>
     </div>
   );

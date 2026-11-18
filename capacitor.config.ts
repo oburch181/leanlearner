@@ -4,17 +4,17 @@ const config: CapacitorConfig = {
   appId: 'dev.leanprover.nng4',
   appName: 'NNG4 Lean',
   webDir: 'dist',
-  backgroundColor: '#020617',
+  backgroundColor: '#F4F8FC',
   android: {
     allowMixedContent: false,
     captureInput: true,
     webContentsDebuggingEnabled: false,
-    backgroundColor: '#020617',
+    backgroundColor: '#F4F8FC',
   },
   plugins: {
     StatusBar: {
-      style: 'DARK',
-      backgroundColor: '#020617',
+      style: 'LIGHT',
+      backgroundColor: '#E6F0FA',
       overlaysWebView: false,
     },
   },

@@ -74,102 +74,121 @@ export const LevelBriefingView: React.FC<LevelBriefingViewProps> = ({
   })();
 
   return (
-    <div className="w-full flex-1 flex flex-col bg-slate-950 overflow-y-auto no-scrollbar">
+    <div className="w-full flex-1 flex flex-col bg-[#F4F8FC] overflow-y-auto no-scrollbar">
       {/* Top Bar */}
-      <div className="h-12 w-full bg-slate-950/90 border-b border-slate-800/80 px-3 flex items-center justify-between shrink-0">
+      <div className="h-14 w-full bg-[#E6F0FA]/95 border-b border-[#C5D8EC] px-3 flex items-center justify-between shrink-0">
         <button
           onClick={onBackToMap}
-          className="p-1.5 rounded-lg text-slate-300 hover:text-white hover:bg-slate-800 transition flex items-center gap-1.5 text-xs"
+          className="min-h-[40px] px-2.5 rounded-xl text-[#0C1B2E] hover:bg-[#D5E6F7] transition flex items-center gap-1.5 text-sm font-semibold cursor-pointer"
         >
-          <ArrowLeft className="w-4 h-4" />
-          <span>World Map</span>
+          <ArrowLeft className="w-5 h-5" />
+          <span>Worlds</span>
         </button>
 
-        <span className="text-xs font-mono font-medium text-slate-400">
+        <span className="text-sm font-mono font-bold text-[#36506B]">
           Level {level.number} of {world.levels.length}
         </span>
+
+        <div className="flex items-center gap-1">
+          <button
+            onClick={onOpenHints}
+            className="min-w-[40px] min-h-[40px] rounded-xl text-[#0284C7] hover:bg-[#D5E6F7] transition flex items-center justify-center cursor-pointer"
+            title="View Hints"
+          >
+            <Lightbulb className="w-5 h-5" />
+          </button>
+          <button
+            onClick={onOpenCodex}
+            className="min-w-[40px] min-h-[40px] rounded-xl text-[#0369A1] hover:bg-[#D5E6F7] transition flex items-center justify-center cursor-pointer"
+            title="Theorem Codex"
+          >
+            <BookOpen className="w-5 h-5" />
+          </button>
+        </div>
       </div>
 
       {/* Main Briefing Body */}
-      <div className="flex-1 p-4 space-y-4 max-w-lg mx-auto w-full">
-        {/* World Badge & Level Title */}
-        <div className="space-y-1">
-          <div className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-indigo-500/10 border border-indigo-400/30 text-indigo-300 text-[10px] font-semibold uppercase tracking-wider">
-            <span>{world.name}</span>
-            <span>•</span>
-            <span>Level {level.number}</span>
-          </div>
-
-          <div className="flex items-center justify-between">
-            <h1 className="text-xl font-extrabold text-white tracking-tight">
-              {level.name}
-            </h1>
+      <div className="flex-1 p-4 space-y-4 max-w-2xl mx-auto w-full">
+        {/* World Info & Level Title */}
+        <div className="space-y-1.5">
+          <div className="flex items-center justify-between gap-2 text-xs font-bold uppercase tracking-wider text-[#0369A1]">
+            <span>{world.name} · Level {level.number}</span>
             {isCompleted && (
-              <span className="px-2 py-0.5 rounded-full bg-emerald-500/10 text-emerald-400 border border-emerald-500/20 text-xs font-medium flex items-center gap-1">
-                <CheckCircle2 className="w-3.5 h-3.5" />
+              <span className="text-[#475569] flex items-center gap-1 normal-case tracking-normal text-sm">
+                <CheckCircle2 className="w-4 h-4" />
                 Completed
               </span>
             )}
           </div>
+
+          <h1 className="text-2xl font-extrabold text-[#0C1B2E] tracking-tight leading-snug">
+            {level.name}
+          </h1>
         </div>
 
         {/* Theorem Statement Card */}
-        <div className="p-3.5 rounded-2xl bg-slate-900 border border-slate-800 space-y-2 shadow-md">
-          <div className="flex items-center justify-between text-xs text-slate-400">
-            <span className="font-semibold text-slate-300">Theorem to Prove</span>
-            <span className="font-mono text-[10px] text-indigo-400">Lean 4</span>
+        <div className="p-4 rounded-2xl bg-[#FFFFFF] border border-[#C5D8EC] space-y-2.5 shadow-xs">
+          <div className="flex items-center justify-between text-xs">
+            <span className="font-bold uppercase tracking-wider text-[#36506B]">Theorem to Prove</span>
+            <span className="font-mono font-bold text-[#0369A1]">Lean 4</span>
           </div>
-          <div className="p-2.5 rounded-xl bg-slate-950 border border-slate-800/80 font-mono text-xs text-emerald-300 leading-relaxed overflow-x-auto">
+          <div className="p-3 rounded-xl bg-[#EDF4FC] border border-[#C5D8EC] font-mono text-sm text-[#334155] font-semibold leading-relaxed overflow-x-auto">
             {level.statement}
           </div>
         </div>
 
         {/* Story & Mathematical Intuition */}
-        <div className="p-4 rounded-2xl bg-slate-900/70 border border-slate-800/80 space-y-2.5">
-          <div className="flex items-center gap-2 text-xs font-bold text-white">
-            <BookOpen className="w-4 h-4 text-sky-400" />
+        <div className="p-4 rounded-2xl bg-[#FFFFFF] border border-[#C5D8EC] space-y-3 shadow-xs">
+          <div className="flex items-center gap-2 text-sm font-extrabold text-[#0C1B2E]">
+            <BookOpen className="w-4 h-4 text-[#0369A1]" />
             <span>Mathematical Motivation</span>
           </div>
-          <p className="text-xs text-slate-300 leading-relaxed font-sans">
+          <p className="text-[15px] text-[#0C1B2E] leading-relaxed font-sans">
             {level.story}
           </p>
-          <p className="text-xs text-slate-400 leading-relaxed pt-1 border-t border-slate-800/60 font-sans">
+          <p className="text-sm text-[#36506B] leading-relaxed pt-2.5 border-t border-[#D6E5F4] font-sans whitespace-pre-line">
             {level.explanation}
           </p>
         </div>
 
         {/* New Tactic Showcase if applicable */}
         {newTacticIntro && (
-          <div className="p-3.5 rounded-2xl bg-gradient-to-r from-indigo-950/60 to-purple-950/50 border border-indigo-500/40 space-y-1.5 shadow-md">
-            <div className="flex items-center gap-1.5 text-xs font-bold text-indigo-300">
-              <Sparkles className="w-4 h-4 text-indigo-400" />
-              <span>New Tactic Unlocked: <code className="text-white bg-indigo-900/60 px-1.5 py-0.5 rounded">{newTacticIntro.name}</code></span>
+          <div className="p-4 rounded-2xl bg-[#E0F2FE] border border-[#7DD3FC] space-y-2 shadow-xs">
+            <div className="flex items-center gap-2 text-sm font-extrabold text-[#0369A1]">
+              <Sparkles className="w-4 h-4 text-[#0369A1] shrink-0" />
+              <span>
+                New Tactic:{' '}
+                <code className="text-[#0C1B2E] bg-[#FFFFFF] px-2 py-0.5 rounded-md border border-[#7DD3FC] font-mono">
+                  {newTacticIntro.name}
+                </code>
+              </span>
             </div>
-            <p className="text-xs text-slate-300 leading-relaxed">
+            <p className="text-sm text-[#0C1B2E] leading-relaxed">
               {newTacticIntro.description}
             </p>
           </div>
         )}
 
         {/* Goal Preview */}
-        <div className="p-3 rounded-2xl bg-slate-900/90 border border-slate-800 space-y-2">
-          <div className="flex items-center gap-2 text-xs font-semibold text-slate-300">
-            <Layers className="w-3.5 h-3.5 text-indigo-400" />
+        <div className="p-4 rounded-2xl bg-[#FFFFFF] border border-[#C5D8EC] space-y-2.5 shadow-xs">
+          <div className="flex items-center gap-2 text-sm font-bold text-[#0C1B2E]">
+            <Layers className="w-4 h-4 text-[#0369A1]" />
             <span>Target Goal Preview</span>
           </div>
 
-          <div className="p-2.5 rounded-xl bg-slate-950 border border-slate-800/60 font-mono text-xs space-y-1">
+          <div className="p-3 rounded-xl bg-[#EDF4FC] border border-[#C5D8EC] font-mono text-sm space-y-1.5">
             {level.initialHypotheses.length > 0 && (
-              <div className="text-[11px] text-slate-400 space-y-0.5 pb-1 border-b border-slate-800/60">
+              <div className="text-sm text-[#36506B] space-y-1 pb-2 border-b border-[#C5D8EC]">
                 {level.initialHypotheses.map((h) => (
                   <div key={h.id}>
-                    <span className="text-amber-400 font-bold">{h.name}</span> : <span className="text-slate-300">{h.type}</span>
+                    <span className="text-[#0284C7] font-bold">{h.name}</span> :{' '}
+                    <span className="text-[#0C1B2E] font-medium">{h.type}</span>
                   </div>
                 ))}
               </div>
             )}
-            <div className="pt-0.5 text-white font-bold flex items-baseline gap-2">
-              <span className="text-indigo-400">⊢</span>
+            <div className="pt-0.5 text-[#0C1B2E] font-bold text-base flex items-baseline gap-2.5">
+              <span className="text-[#0369A1]">⊢</span>
               <span>{level.initialTarget}</span>
             </div>
           </div>
@@ -178,22 +197,22 @@ export const LevelBriefingView: React.FC<LevelBriefingViewProps> = ({
         {/* Start Proof CTA Button */}
         <button
           onClick={onStartProof}
-          className="w-full py-3.5 rounded-2xl bg-gradient-to-r from-indigo-600 via-indigo-500 to-emerald-600 hover:from-indigo-500 hover:to-emerald-500 text-white font-extrabold text-sm flex items-center justify-center gap-2 shadow-lg shadow-indigo-900/40 transition active:scale-98"
+          className="w-full min-h-[52px] py-3.5 rounded-2xl bg-[#0369A1] hover:bg-[#075985] text-[#FFFFFF] font-extrabold text-base flex items-center justify-center gap-2 shadow-md transition active:scale-[0.98] cursor-pointer"
         >
-          <Play className="w-4 h-4 fill-white" />
+          <Play className="w-5 h-5 fill-[#FFFFFF]" />
           <span>Enter Proof Lab</span>
-          <ChevronRight className="w-4 h-4" />
+          <ChevronRight className="w-5 h-5" />
         </button>
 
         {/* Prev / Next Level Navigation */}
-        <div className="flex items-center justify-between text-xs pt-2">
+        <div className="flex items-center justify-between gap-3 pt-1 pb-3">
           <button
             onClick={onPrevLevel}
             disabled={!hasPrevLevel}
-            className={`px-3 py-1.5 rounded-xl border text-[11px] transition ${
+            className={`min-h-[44px] px-4 py-2 rounded-xl border text-sm font-bold transition ${
               hasPrevLevel
-                ? 'bg-slate-900 border-slate-800 text-slate-300 hover:bg-slate-800'
-                : 'opacity-30 pointer-events-none border-transparent'
+                ? 'bg-[#FFFFFF] border-[#A8C4E0] text-[#0C1B2E] hover:bg-[#E6F0FA] cursor-pointer'
+                : 'opacity-35 pointer-events-none border-transparent'
             }`}
           >
             ← Previous Level
@@ -202,10 +221,10 @@ export const LevelBriefingView: React.FC<LevelBriefingViewProps> = ({
           <button
             onClick={onNextLevel}
             disabled={!hasNextLevel}
-            className={`px-3 py-1.5 rounded-xl border text-[11px] transition ${
+            className={`min-h-[44px] px-4 py-2 rounded-xl border text-sm font-bold transition ${
               hasNextLevel
-                ? 'bg-slate-900 border-slate-800 text-slate-300 hover:bg-slate-800'
-                : 'opacity-30 pointer-events-none border-transparent'
+                ? 'bg-[#FFFFFF] border-[#A8C4E0] text-[#0C1B2E] hover:bg-[#E6F0FA] cursor-pointer'
+                : 'opacity-35 pointer-events-none border-transparent'
             }`}
           >
             Next Level →
