@@ -170,7 +170,7 @@ export const FreeplayView: React.FC<FreeplayViewProps> = ({
         particleCount: 60,
         spread: 70,
         origin: { y: 0.6 },
-        colors: ['#0284C7', '#38BDF8', '#0EA5E9', '#1D4ED8', '#94A3B8'],
+        colors: ['#9A5B13', '#C68632', '#D9A45B', '#6B4C35', '#A89066'],
       });
     }
   }, [proofResult.isComplete, completedCelebrated, proofCode, soundEnabled, hapticsEnabled]);
@@ -214,7 +214,7 @@ export const FreeplayView: React.FC<FreeplayViewProps> = ({
   };
 
   return (
-    <div className="w-full flex-1 flex flex-col bg-[#F4F8FC] overflow-hidden">
+    <div className="w-full flex-1 flex flex-col bg-[#EDE2C6] overflow-hidden">
       {/* Freeplay App Bar */}
       <Header
         title="Lean 4 Freeplay"
@@ -231,13 +231,13 @@ export const FreeplayView: React.FC<FreeplayViewProps> = ({
       {/* Main Freeplay Workspace */}
       <div className="flex-1 flex flex-col p-3 space-y-2.5 overflow-y-auto no-scrollbar">
         {/* Active Theorem Card with Edit & Presets */}
-        <div className="bg-[#FFFFFF] border border-[#C5D8EC] rounded-2xl p-3 flex items-center justify-between gap-2 shadow-xs shrink-0">
+        <div className="bg-[#F5EEDB] border border-[#CEBA92] rounded-2xl p-3 flex items-center justify-between gap-2 shadow-xs shrink-0">
           <div className="min-w-0 flex-1">
-            <div className="flex items-center gap-1.5 text-xs text-[#1D4ED8] font-bold uppercase tracking-wider">
-              <Sparkles className="w-3.5 h-3.5 text-[#1D4ED8]" />
+            <div className="flex items-center gap-1.5 text-xs text-[#6B4C35] font-bold tracking-wide">
+              <Sparkles className="w-3.5 h-3.5 text-[#8B4F0E]" />
               <span>Target Theorem</span>
             </div>
-            <div className="font-mono text-sm text-[#334155] font-bold truncate mt-0.5">
+            <div className="font-mono text-sm text-[#3D3224] font-bold truncate mt-0.5">
               {currentStatement}
             </div>
           </div>
@@ -248,17 +248,17 @@ export const FreeplayView: React.FC<FreeplayViewProps> = ({
                 setInputStatement(currentStatement);
                 setIsEditModalOpen(true);
               }}
-              className="px-3 min-h-[38px] rounded-xl bg-[#E6F0FA] hover:bg-[#D5E6F7] text-[#0C1B2E] border border-[#A8C4E0] text-xs font-bold flex items-center gap-1.5 transition active:scale-95 cursor-pointer"
+              className="px-3 min-h-[38px] rounded-xl bg-[#E3D4B3] hover:bg-[#D5C39C] text-[#2C2115] border border-[#BDA67C] text-xs font-bold flex items-center gap-1.5 transition active:scale-95 cursor-pointer"
               title="Edit theorem or choose preset"
             >
-              <Pencil className="w-3.5 h-3.5 text-[#0369A1]" />
+              <Pencil className="w-3.5 h-3.5 text-[#8B4F0E]" />
               <span>Presets</span>
             </button>
 
             {savedTheorems.length > 0 && (
               <button
                 onClick={() => setIsLibraryOpen(true)}
-                className="min-w-[38px] min-h-[38px] rounded-xl bg-[#E6F0FA] hover:bg-[#D5E6F7] text-[#0284C7] border border-[#A8C4E0] flex items-center justify-center cursor-pointer"
+                className="min-w-[38px] min-h-[38px] rounded-xl bg-[#E3D4B3] hover:bg-[#D5C39C] text-[#8B4F0E] border border-[#BDA67C] flex items-center justify-center cursor-pointer"
                 title="Saved custom theorems"
               >
                 <FolderOpen className="w-4 h-4" />
@@ -279,14 +279,14 @@ export const FreeplayView: React.FC<FreeplayViewProps> = ({
 
         {/* Celebratory Victory Bar for Freeplay */}
         {proofResult.isComplete && (
-          <div className="p-3.5 rounded-2xl bg-[#F1F5F9] border border-[#CBD5E1] flex items-center justify-between gap-2 shadow-sm animate-fade-in shrink-0">
+          <div className="p-3.5 rounded-2xl bg-[#E6DAC0] border border-[#BFA982] flex items-center justify-between gap-2 shadow-sm animate-fade-in shrink-0">
             <div className="flex items-center gap-2.5 min-w-0">
-              <div className="w-9 h-9 rounded-full bg-[#475569] flex items-center justify-center shrink-0">
-                <CheckCircle2 className="w-5 h-5 text-[#FFFFFF]" />
+              <div className="w-9 h-9 rounded-full bg-[#5F5343] flex items-center justify-center shrink-0">
+                <CheckCircle2 className="w-5 h-5 text-[#FDF8EC]" />
               </div>
               <div className="min-w-0">
-                <h4 className="text-sm font-extrabold text-[#334155] truncate">Proof Formally Verified!</h4>
-                <p className="text-xs text-[#475569] truncate">Closed using Lean 4 Peano axioms.</p>
+                <h4 className="text-sm font-extrabold text-[#2C2115] truncate">Proof Formally Verified!</h4>
+                <p className="text-xs text-[#5C4A36] truncate">Closed using Lean 4 Peano axioms.</p>
               </div>
             </div>
 
@@ -294,7 +294,7 @@ export const FreeplayView: React.FC<FreeplayViewProps> = ({
               <button
                 onClick={handleSaveTheorem}
                 disabled={isSaved}
-                className="px-3 min-h-[40px] rounded-xl bg-[#0369A1] hover:bg-[#075985] text-[#FFFFFF] font-bold text-xs flex items-center gap-1.5 shadow-xs transition active:scale-95 cursor-pointer"
+                className="px-3 min-h-[40px] rounded-xl bg-[#9A5B13] hover:bg-[#7C480D] text-[#FDF8EC] font-bold text-xs flex items-center gap-1.5 shadow-xs transition active:scale-95 cursor-pointer"
               >
                 {isSaved ? <Check className="w-4 h-4" /> : <BookMarked className="w-4 h-4" />}
                 <span>{isSaved ? 'Saved!' : 'Save'}</span>
@@ -302,10 +302,10 @@ export const FreeplayView: React.FC<FreeplayViewProps> = ({
 
               <button
                 onClick={handleCopyCode}
-                className="min-w-[40px] min-h-[40px] rounded-xl bg-[#FFFFFF] hover:bg-[#E6F0FA] text-[#0C1B2E] border border-[#CBD5E1] flex items-center justify-center cursor-pointer"
+                className="min-w-[40px] min-h-[40px] rounded-xl bg-[#F5EEDB] hover:bg-[#E3D4B3] text-[#2C2115] border border-[#BDA67C] flex items-center justify-center cursor-pointer"
                 title="Copy Lean 4 Source"
               >
-                {copiedCode ? <Check className="w-4 h-4 text-[#475569]" /> : <Copy className="w-4 h-4" />}
+                {copiedCode ? <Check className="w-4 h-4 text-[#5F5343]" /> : <Copy className="w-4 h-4" />}
               </button>
             </div>
           </div>
@@ -340,22 +340,22 @@ export const FreeplayView: React.FC<FreeplayViewProps> = ({
 
       {/* New Theorem / Presets Modal */}
       {isEditModalOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 bg-[#0C1B2E]/45 backdrop-blur-xs animate-fade-in">
-          <div className="w-full max-w-md bg-[#F4F8FC] border border-[#A8C4E0] rounded-3xl shadow-2xl flex flex-col max-h-[88vh] overflow-hidden">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 bg-[#2C2115]/50 backdrop-blur-xs animate-fade-in">
+          <div className="w-full max-w-md bg-[#EDE2C6] border border-[#BDA67C] rounded-3xl shadow-2xl flex flex-col max-h-[88vh] overflow-hidden">
             {/* Header */}
-            <div className="px-4 py-3.5 bg-[#E6F0FA] border-b border-[#C5D8EC] flex items-center justify-between">
+            <div className="px-4 py-3.5 bg-[#E3D4B3] border-b border-[#CEBA92] flex items-center justify-between">
               <div className="flex items-center gap-2.5">
-                <div className="w-9 h-9 rounded-xl bg-[#E0F2FE] border border-[#7DD3FC] flex items-center justify-center">
-                  <Sparkles className="w-5 h-5 text-[#0369A1]" />
+                <div className="w-9 h-9 rounded-xl bg-[#EFE0BA] border border-[#C9A96E] flex items-center justify-center">
+                  <Sparkles className="w-5 h-5 text-[#8B4F0E]" />
                 </div>
                 <div>
-                  <h3 className="text-base font-extrabold text-[#0C1B2E]">Theorem Sandbox</h3>
-                  <p className="text-xs text-[#36506B]">Configure or pick any identity</p>
+                  <h3 className="text-base font-extrabold text-[#2C2115]">Theorem Sandbox</h3>
+                  <p className="text-xs text-[#5C4A36]">Configure or pick any identity</p>
                 </div>
               </div>
               <button
                 onClick={() => setIsEditModalOpen(false)}
-                className="min-w-[40px] min-h-[40px] rounded-xl text-[#36506B] hover:text-[#0C1B2E] hover:bg-[#D5E6F7] transition flex items-center justify-center cursor-pointer"
+                className="min-w-[40px] min-h-[40px] rounded-xl text-[#5C4A36] hover:text-[#2C2115] hover:bg-[#D5C39C] transition flex items-center justify-center cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -364,7 +364,7 @@ export const FreeplayView: React.FC<FreeplayViewProps> = ({
             <div className="flex-1 overflow-y-auto p-4 space-y-4 no-scrollbar">
               {/* Custom Header Input */}
               <div className="space-y-2">
-                <label className="text-sm font-bold text-[#0C1B2E]">
+                <label className="text-sm font-bold text-[#2C2115]">
                   Custom Lean 4 Theorem Declaration
                 </label>
                 <input
@@ -372,17 +372,17 @@ export const FreeplayView: React.FC<FreeplayViewProps> = ({
                   value={inputStatement}
                   onChange={(e) => setInputStatement(e.target.value)}
                   placeholder="theorem my_id (a b : ℕ) : a + b = b + a"
-                  className="w-full bg-[#FFFFFF] border border-[#A8C4E0] rounded-xl px-3.5 py-2.5 text-sm font-mono text-[#334155] font-semibold focus:outline-none focus:border-[#0369A1]"
+                  className="w-full bg-[#F5EEDB] border border-[#BDA67C] rounded-xl px-3.5 py-2.5 text-sm font-mono text-[#2C2115] font-semibold focus:outline-none focus:border-[#9A5B13]"
                 />
-                <p className="text-xs text-[#36506B] leading-relaxed">
-                  Type a full Lean statement (e.g. <code className="font-mono font-bold text-[#0C1B2E]">theorem test (x y : ℕ) : x + y = y + x</code>) or a plain equation (e.g. <code className="font-mono font-bold text-[#0C1B2E]">a + 0 = a</code>).
+                <p className="text-xs text-[#5C4A36] leading-relaxed">
+                  Type a full Lean statement (e.g. <code className="font-mono font-bold text-[#2C2115]">theorem test (x y : ℕ) : x + y = y + x</code>) or a plain equation (e.g. <code className="font-mono font-bold text-[#2C2115]">a + 0 = a</code>).
                 </p>
 
                 <button
                   onClick={() => {
                     handleApplyPreset(inputStatement.trim() || 'example (a : ℕ) : a + 0 = a');
                   }}
-                  className="w-full min-h-[44px] mt-1 py-2.5 rounded-xl bg-[#0369A1] hover:bg-[#075985] text-[#FFFFFF] font-bold text-sm flex items-center justify-center gap-2 transition active:scale-[0.98] shadow-sm cursor-pointer"
+                  className="w-full min-h-[44px] mt-1 py-2.5 rounded-xl bg-[#9A5B13] hover:bg-[#7C480D] text-[#FDF8EC] font-bold text-sm flex items-center justify-center gap-2 transition active:scale-[0.98] shadow-sm cursor-pointer"
                 >
                   <Check className="w-4 h-4" />
                   <span>Set as Active Goal</span>
@@ -390,8 +390,8 @@ export const FreeplayView: React.FC<FreeplayViewProps> = ({
               </div>
 
               {/* Presets List */}
-              <div className="space-y-2.5 pt-3 border-t border-[#C5D8EC]">
-                <div className="text-xs font-bold uppercase tracking-wider text-[#36506B]">
+              <div className="space-y-2.5 pt-3 border-t border-[#CEBA92]">
+                <div className="text-xs font-bold tracking-wide text-[#5C4A36]">
                   Explore Curated Challenges
                 </div>
 
@@ -400,16 +400,16 @@ export const FreeplayView: React.FC<FreeplayViewProps> = ({
                     <button
                       key={preset.name}
                       onClick={() => handleApplyPreset(preset.statement)}
-                      className="w-full p-3.5 rounded-2xl bg-[#FFFFFF] border border-[#C5D8EC] hover:border-[#0369A1] hover:bg-[#F0F7FF] text-left transition active:scale-[0.99] cursor-pointer"
+                      className="w-full p-3.5 rounded-2xl bg-[#F5EEDB] border border-[#CEBA92] hover:border-[#9A5B13] hover:bg-[#EFE5CC] text-left transition active:scale-[0.99] cursor-pointer"
                     >
                       <div className="flex items-center justify-between gap-2">
-                        <span className="text-sm font-extrabold text-[#0C1B2E]">{preset.title}</span>
-                        <span className="text-xs font-mono font-bold text-[#0369A1] shrink-0">Load →</span>
+                        <span className="text-sm font-extrabold text-[#2C2115]">{preset.title}</span>
+                        <span className="text-xs font-mono font-bold text-[#8B4F0E] shrink-0">Load →</span>
                       </div>
-                      <div className="font-mono text-xs text-[#334155] font-semibold truncate mt-1">
+                      <div className="font-mono text-xs text-[#3D3224] font-semibold truncate mt-1">
                         {preset.statement}
                       </div>
-                      <div className="text-xs text-[#36506B] mt-1 leading-snug">
+                      <div className="text-xs text-[#5C4A36] mt-1 leading-snug">
                         {preset.description}
                       </div>
                     </button>
@@ -423,16 +423,16 @@ export const FreeplayView: React.FC<FreeplayViewProps> = ({
 
       {/* Saved Custom Theorems Library Modal */}
       {isLibraryOpen && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 bg-[#0C1B2E]/45 backdrop-blur-xs animate-fade-in">
-          <div className="w-full max-w-md bg-[#F4F8FC] border border-[#A8C4E0] rounded-3xl shadow-2xl flex flex-col max-h-[82vh] overflow-hidden">
-            <div className="px-4 py-3.5 bg-[#E6F0FA] border-b border-[#C5D8EC] flex items-center justify-between">
+        <div className="fixed inset-0 z-50 flex items-center justify-center p-3 bg-[#2C2115]/50 backdrop-blur-xs animate-fade-in">
+          <div className="w-full max-w-md bg-[#EDE2C6] border border-[#BDA67C] rounded-3xl shadow-2xl flex flex-col max-h-[82vh] overflow-hidden">
+            <div className="px-4 py-3.5 bg-[#E3D4B3] border-b border-[#CEBA92] flex items-center justify-between">
               <div className="flex items-center gap-2.5">
-                <FolderOpen className="w-5 h-5 text-[#0284C7]" />
-                <h3 className="text-base font-extrabold text-[#0C1B2E]">My Proved Theorems ({savedTheorems.length})</h3>
+                <FolderOpen className="w-5 h-5 text-[#8B4F0E]" />
+                <h3 className="text-base font-extrabold text-[#2C2115]">My Proved Theorems ({savedTheorems.length})</h3>
               </div>
               <button
                 onClick={() => setIsLibraryOpen(false)}
-                className="min-w-[40px] min-h-[40px] rounded-xl text-[#36506B] hover:text-[#0C1B2E] hover:bg-[#D5E6F7] flex items-center justify-center cursor-pointer"
+                className="min-w-[40px] min-h-[40px] rounded-xl text-[#5C4A36] hover:text-[#2C2115] hover:bg-[#D5C39C] flex items-center justify-center cursor-pointer"
               >
                 <X className="w-5 h-5" />
               </button>
@@ -442,11 +442,11 @@ export const FreeplayView: React.FC<FreeplayViewProps> = ({
               {savedTheorems.map((thm) => (
                 <div
                   key={thm.id}
-                  className="p-3.5 rounded-2xl bg-[#FFFFFF] border border-[#C5D8EC] flex items-center justify-between gap-2.5"
+                  className="p-3.5 rounded-2xl bg-[#F5EEDB] border border-[#CEBA92] flex items-center justify-between gap-2.5"
                 >
                   <div className="min-w-0 flex-1">
-                    <div className="text-sm font-extrabold text-[#0C1B2E] truncate">{thm.name}</div>
-                    <div className="text-xs font-mono font-semibold text-[#334155] truncate mt-0.5">
+                    <div className="text-sm font-extrabold text-[#2C2115] truncate">{thm.name}</div>
+                    <div className="text-xs font-mono font-semibold text-[#3D3224] truncate mt-0.5">
                       {thm.statement}
                     </div>
                   </div>
@@ -466,7 +466,7 @@ export const FreeplayView: React.FC<FreeplayViewProps> = ({
                         setIsSaved(false);
                         setIsLibraryOpen(false);
                       }}
-                      className="min-h-[38px] px-3 py-1.5 rounded-xl bg-[#0369A1] hover:bg-[#075985] text-[#FFFFFF] text-xs font-bold cursor-pointer"
+                      className="min-h-[38px] px-3 py-1.5 rounded-xl bg-[#9A5B13] hover:bg-[#7C480D] text-[#FDF8EC] text-xs font-bold cursor-pointer"
                     >
                       Load
                     </button>
@@ -474,7 +474,7 @@ export const FreeplayView: React.FC<FreeplayViewProps> = ({
                     {onDeleteCustomTheorem && (
                       <button
                         onClick={() => onDeleteCustomTheorem(thm.id)}
-                        className="min-w-[38px] min-h-[38px] rounded-xl text-[#526D88] hover:text-[#991B1B] hover:bg-[#FEF2F2] flex items-center justify-center cursor-pointer"
+                        className="min-w-[38px] min-h-[38px] rounded-xl text-[#7D6952] hover:text-[#7C261D] hover:bg-[#F3DDD5] flex items-center justify-center cursor-pointer"
                         title="Delete theorem"
                       >
                         <Trash2 className="w-4 h-4" />

@@ -322,7 +322,7 @@ export default function App() {
           />
         )
       ) : (
-        <div className="w-full flex-1 flex flex-col bg-[#F4F8FC] overflow-hidden">
+        <div className="w-full flex-1 flex flex-col bg-[#EDE2C6] overflow-hidden">
           <Header
             title="Natural Number Game"
             subtitle="Lean 4 • Peano Arithmetic"

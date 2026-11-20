@@ -138,7 +138,7 @@ export const LevelView: React.FC<LevelViewProps> = ({
         particleCount: 50,
         spread: 60,
         origin: { y: 0.6 },
-        colors: ['#0284C7', '#38BDF8', '#0EA5E9', '#1D4ED8', '#94A3B8'],
+        colors: ['#9A5B13', '#C68632', '#D9A45B', '#6B4C35', '#A89066'],
       });
     } else if (res.error) {
       if (!isIncompleteTemplateLine(newCode, res.error.line)) {
@@ -159,7 +159,7 @@ export const LevelView: React.FC<LevelViewProps> = ({
   };
 
   return (
-    <div className="w-full flex-1 flex flex-col bg-[#F4F8FC] overflow-hidden">
+    <div className="w-full flex-1 flex flex-col bg-[#EDE2C6] overflow-hidden">
       {/* App Bar */}
       <Header
         title={`${world.name} · Lvl ${level.number}`}
@@ -178,16 +178,16 @@ export const LevelView: React.FC<LevelViewProps> = ({
       {/* Main Proof Lab Workspace */}
       <div className="flex-1 flex flex-col p-3 space-y-2.5 overflow-y-auto no-scrollbar">
         {/* Level Goal Bar with quick Briefing button */}
-        <div className="bg-[#FFFFFF] border border-[#C5D8EC] rounded-2xl px-3.5 py-2 flex items-center justify-between gap-2 shrink-0 shadow-xs">
+        <div className="bg-[#F5EEDB] border border-[#CEBA92] rounded-2xl px-3.5 py-2 flex items-center justify-between gap-2 shrink-0 shadow-xs">
           <div className="flex items-center gap-2 min-w-0">
-            <span className="font-mono text-sm text-[#334155] font-bold truncate">
+            <span className="font-mono text-sm text-[#3D3224] font-bold truncate">
               {level.statement}
             </span>
           </div>
 
           <button
             onClick={onOpenBriefing}
-            className="flex items-center gap-1.5 text-xs font-bold text-[#0369A1] hover:bg-[#BAE6FD] bg-[#E0F2FE] border border-[#7DD3FC] px-2.5 min-h-[34px] rounded-xl shrink-0 active:scale-95 transition cursor-pointer"
+            className="flex items-center gap-1.5 text-xs font-bold text-[#6E3F0A] hover:bg-[#E7D4A6] bg-[#EFE0BA] border border-[#C9A96E] px-2.5 min-h-[34px] rounded-xl shrink-0 active:scale-95 transition cursor-pointer"
             title="Open Story & Briefing"
           >
             <Info className="w-3.5 h-3.5" />
@@ -207,21 +207,21 @@ export const LevelView: React.FC<LevelViewProps> = ({
 
         {/* Level Complete Action Card */}
         {proofResult.isComplete && (
-          <div className="p-3.5 rounded-2xl bg-[#F1F5F9] border border-[#CBD5E1] flex items-center justify-between gap-3 shadow-sm animate-fade-in shrink-0">
+          <div className="p-3.5 rounded-2xl bg-[#E6DAC0] border border-[#BFA982] flex items-center justify-between gap-3 shadow-sm animate-fade-in shrink-0">
             <div className="flex items-center gap-2.5 min-w-0">
-              <div className="w-9 h-9 rounded-full bg-[#475569] flex items-center justify-center shrink-0">
-                <CheckCircle2 className="w-5 h-5 text-[#FFFFFF]" />
+              <div className="w-9 h-9 rounded-full bg-[#5F5343] flex items-center justify-center shrink-0">
+                <CheckCircle2 className="w-5 h-5 text-[#FDF8EC]" />
               </div>
               <div className="min-w-0">
-                <h4 className="text-sm font-extrabold text-[#334155] truncate">Theorem Mastered!</h4>
-                <p className="text-xs text-[#475569] truncate">Saved to Codex.</p>
+                <h4 className="text-sm font-extrabold text-[#2C2115] truncate">Theorem Mastered!</h4>
+                <p className="text-xs text-[#5C4A36] truncate">Saved to Codex.</p>
               </div>
             </div>
 
             {hasNextLevel ? (
               <button
                 onClick={onNextLevel}
-                className="min-h-[42px] px-4 py-2 rounded-xl bg-[#0369A1] hover:bg-[#075985] text-[#FFFFFF] font-bold text-sm flex items-center gap-1 shadow-sm transition active:scale-95 shrink-0 cursor-pointer"
+                className="min-h-[42px] px-4 py-2 rounded-xl bg-[#9A5B13] hover:bg-[#7C480D] text-[#FDF8EC] font-bold text-sm flex items-center gap-1 shadow-sm transition active:scale-95 shrink-0 cursor-pointer"
               >
                 <span>Next Level</span>
                 <ChevronRight className="w-4 h-4" />
@@ -229,7 +229,7 @@ export const LevelView: React.FC<LevelViewProps> = ({
             ) : (
               <button
                 onClick={onBackToMap}
-                className="min-h-[42px] px-4 py-2 rounded-xl bg-[#0369A1] hover:bg-[#075985] text-[#FFFFFF] font-bold text-sm flex items-center gap-1 transition active:scale-95 shrink-0 cursor-pointer"
+                className="min-h-[42px] px-4 py-2 rounded-xl bg-[#9A5B13] hover:bg-[#7C480D] text-[#FDF8EC] font-bold text-sm flex items-center gap-1 transition active:scale-95 shrink-0 cursor-pointer"
               >
                 <span>World Map</span>
                 <ChevronRight className="w-4 h-4" />
@@ -258,7 +258,7 @@ export const LevelView: React.FC<LevelViewProps> = ({
             disabled={!hasPrevLevel}
             className={`min-h-[38px] flex items-center gap-1 px-3 py-1.5 rounded-xl border text-xs font-bold transition ${
               hasPrevLevel
-                ? 'bg-[#FFFFFF] border-[#A8C4E0] text-[#0C1B2E] hover:bg-[#E6F0FA] cursor-pointer'
+                ? 'bg-[#F5EEDB] border-[#BDA67C] text-[#2C2115] hover:bg-[#E3D4B3] cursor-pointer'
                 : 'opacity-35 pointer-events-none border-transparent'
             }`}
           >
@@ -266,7 +266,7 @@ export const LevelView: React.FC<LevelViewProps> = ({
             <span>Prev</span>
           </button>
 
-          <span className="text-xs text-[#36506B] font-mono font-semibold">
+          <span className="text-xs text-[#5C4A36] font-mono font-semibold tabular-nums">
             {world.name} · {level.number}/{world.levels.length}
           </span>
 
@@ -275,7 +275,7 @@ export const LevelView: React.FC<LevelViewProps> = ({
             disabled={!hasNextLevel}
             className={`min-h-[38px] flex items-center gap-1 px-3 py-1.5 rounded-xl border text-xs font-bold transition ${
               hasNextLevel
-                ? 'bg-[#FFFFFF] border-[#A8C4E0] text-[#0C1B2E] hover:bg-[#E6F0FA] cursor-pointer'
+                ? 'bg-[#F5EEDB] border-[#BDA67C] text-[#2C2115] hover:bg-[#E3D4B3] cursor-pointer'
                 : 'opacity-35 pointer-events-none border-transparent'
             }`}
           >

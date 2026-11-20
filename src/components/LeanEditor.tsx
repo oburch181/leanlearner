@@ -123,20 +123,20 @@ export const LeanEditor = forwardRef<LeanEditorHandle, LeanEditorProps>(
     const lines = code.split('\n');
 
     return (
-      <div className="w-full flex-1 flex flex-col bg-[#FFFFFF] border border-[#C5D8EC] rounded-2xl overflow-hidden shadow-xs relative">
+      <div className="w-full flex-1 flex flex-col bg-[#F5EEDB] border border-[#CEBA92] rounded-2xl overflow-hidden shadow-xs relative">
         {/* Editor Top Bar */}
-        <div className="h-9 px-3 bg-[#E6F0FA] border-b border-[#C5D8EC] flex items-center justify-between text-xs text-[#36506B] select-none">
+        <div className="h-9 px-3 bg-[#E3D4B3] border-b border-[#CEBA92] flex items-center justify-between text-xs text-[#5C4A36] select-none">
           <div className="flex items-center gap-2 min-w-0">
-            <span className="font-mono font-bold text-[#0369A1]">proof.lean</span>
-            <span className="text-[#6E87A0]">·</span>
-            <span className="text-xs font-medium text-[#36506B] truncate">Lean 4 Tactic Mode</span>
+            <span className="font-mono font-bold text-[#8B4F0E]">proof.lean</span>
+            <span className="text-[#7D6952]">·</span>
+            <span className="text-xs font-medium text-[#5C4A36] truncate">Lean 4 Tactic Mode</span>
           </div>
 
           <div className="flex items-center gap-1.5 shrink-0">
             {onToggleSystemKeyboard && (
               <button
                 onClick={onToggleSystemKeyboard}
-                className="flex items-center gap-1.5 text-xs font-semibold text-[#0C1B2E] transition px-2.5 py-1 rounded-lg bg-[#DCE9F7] hover:bg-[#C2D7EE] border border-[#A8C4E0] cursor-pointer"
+                className="flex items-center gap-1.5 text-xs font-semibold text-[#2C2115] transition px-2.5 py-1 rounded-lg bg-[#DAC8A2] hover:bg-[#D0BC92] border border-[#BDA67C] cursor-pointer"
                 title={
                   useSystemKeyboard
                     ? 'Switch to Custom Lean Keyboard'
@@ -145,12 +145,12 @@ export const LeanEditor = forwardRef<LeanEditorHandle, LeanEditorProps>(
               >
                 {useSystemKeyboard ? (
                   <>
-                    <Keyboard className="w-3.5 h-3.5 text-[#475569]" />
-                    <span className="text-[#475569]">System KB</span>
+                    <Keyboard className="w-3.5 h-3.5 text-[#5F5343]" />
+                    <span className="text-[#5F5343]">System KB</span>
                   </>
                 ) : (
                   <>
-                    <Smartphone className="w-3.5 h-3.5 text-[#0369A1]" />
+                    <Smartphone className="w-3.5 h-3.5 text-[#8B4F0E]" />
                     <span>Custom KB</span>
                   </>
                 )}
@@ -159,7 +159,7 @@ export const LeanEditor = forwardRef<LeanEditorHandle, LeanEditorProps>(
 
             <button
               onClick={onReset}
-              className="flex items-center gap-1 text-xs font-semibold text-[#36506B] hover:text-[#0C1B2E] transition active:scale-95 px-2 py-1 rounded-lg hover:bg-[#DCE9F7] cursor-pointer"
+              className="flex items-center gap-1 text-xs font-semibold text-[#5C4A36] hover:text-[#2C2115] transition active:scale-95 px-2 py-1 rounded-lg hover:bg-[#DAC8A2] cursor-pointer"
               title="Reset to starter code"
             >
               <RotateCcw className="w-3.5 h-3.5" />
@@ -171,12 +171,12 @@ export const LeanEditor = forwardRef<LeanEditorHandle, LeanEditorProps>(
         {/* Code Area with Line Numbers */}
         <div className="flex-1 relative flex font-mono text-sm leading-6 overflow-hidden">
           {/* Line Numbers column */}
-          <div className="w-10 bg-[#EDF4FC] py-2.5 border-r border-[#D6E5F4] select-none text-right pr-2.5 text-[#526D88] font-mono text-xs shrink-0">
+          <div className="w-10 bg-[#E9DEC2] py-2.5 border-r border-[#D8C7A4] select-none text-right pr-2.5 text-[#7D6952] font-mono text-xs shrink-0 tabular-nums">
             {lines.map((_, i) => (
               <div
                 key={i}
                 className={`h-6 leading-6 ${
-                  errorLine === i + 1 ? 'text-[#991B1B] font-extrabold bg-[#FEF2F2] rounded-l px-1' : ''
+                  errorLine === i + 1 ? 'text-[#7C261D] font-extrabold bg-[#F3DDD5] rounded-l px-1' : ''
                 }`}
               >
                 {i + 1}
@@ -193,7 +193,7 @@ export const LeanEditor = forwardRef<LeanEditorHandle, LeanEditorProps>(
             autoCapitalize="off"
             autoCorrect="off"
             inputMode={useSystemKeyboard ? 'text' : 'none'}
-            className="flex-1 w-full h-full bg-transparent px-3 py-2.5 text-[#0C1B2E] font-medium resize-none outline-none font-mono text-sm leading-6 focus:ring-0 selection:bg-[#0369A1]/20 placeholder:text-[#6E87A0]"
+            className="flex-1 w-full h-full bg-transparent px-3 py-2.5 text-[#2C2115] font-medium resize-none outline-none font-mono text-sm leading-6 focus:ring-0 selection:bg-[#9A5B13]/20 placeholder:text-[#7D6952]"
             placeholder="Type tactics here..."
           />
         </div>

@@ -80,27 +80,27 @@ export const WorldMap: React.FC<WorldMapProps> = ({
   };
 
   return (
-    <div className="w-full flex-1 overflow-y-auto p-4 space-y-4 no-scrollbar bg-[#F4F8FC]">
+    <div className="w-full flex-1 overflow-y-auto p-4 space-y-4 no-scrollbar bg-[#EDE2C6]">
       <div className="max-w-3xl mx-auto w-full space-y-4">
         {/* Progress & Quick Actions Card */}
-        <div className="bg-[#FFFFFF] border border-[#C5D8EC] rounded-2xl p-4 shadow-xs space-y-3">
+        <div className="bg-[#F5EEDB] border border-[#CEBA92] rounded-2xl p-4 shadow-xs space-y-3">
           <div className="flex items-center justify-between text-sm">
             <div className="flex items-center gap-2">
-              <span className="font-bold text-[#0C1B2E]">Journey Progress</span>
-              <span className="text-[#6E87A0]">·</span>
-              <span className="text-[#0369A1] font-mono font-semibold">
+              <span className="font-bold text-[#2C2115]">Journey Progress</span>
+              <span className="text-[#7D6952]">·</span>
+              <span className="text-[#8B4F0E] font-mono font-semibold tabular-nums">
                 {totalCompleted} of {totalLevels} Proofs
               </span>
             </div>
-            <span className="font-mono text-[#36506B] text-sm font-bold">
+            <span className="font-mono text-[#5C4A36] text-sm font-bold tabular-nums">
               {progressPercent}%
             </span>
           </div>
 
           {/* Progress Bar */}
-          <div className="w-full h-2.5 rounded-full bg-[#DCE9F7] overflow-hidden border border-[#C5D8EC]/70">
+          <div className="w-full h-2.5 rounded-full bg-[#DFD1B0] overflow-hidden border border-[#CEBA92]/80">
             <div
-              className="h-full bg-gradient-to-r from-[#0369A1] to-[#38BDF8] rounded-full transition-all duration-500"
+              className="h-full bg-gradient-to-r from-[#8B4F0E] to-[#C68632] rounded-full transition-all duration-500"
               style={{ width: `${Math.max(4, progressPercent)}%` }}
             />
           </div>
@@ -109,23 +109,23 @@ export const WorldMap: React.FC<WorldMapProps> = ({
           {nextLevelToPlay && (
             <button
               onClick={() => onSelectLevel(nextLevelToPlay.level)}
-              className="w-full min-h-[52px] py-2.5 px-3.5 rounded-xl bg-[#E0F2FE] border border-[#7DD3FC] hover:bg-[#BAE6FD] hover:border-[#38BDF8] flex items-center justify-between text-left transition active:scale-[0.99] cursor-pointer"
+              className="w-full min-h-[52px] py-2.5 px-3.5 rounded-xl bg-[#EFE0BA] border border-[#C9A96E] hover:bg-[#E7D4A6] hover:border-[#B69051] flex items-center justify-between text-left transition active:scale-[0.99] cursor-pointer"
             >
               <div className="flex items-center gap-3 min-w-0">
-                <div className="w-9 h-9 rounded-xl bg-[#0369A1] flex items-center justify-center shrink-0 shadow-xs">
-                  <Play className="w-4 h-4 fill-[#FFFFFF] text-[#FFFFFF] ml-0.5" />
+                <div className="w-9 h-9 rounded-xl bg-[#9A5B13] flex items-center justify-center shrink-0 shadow-xs">
+                  <Play className="w-4 h-4 fill-[#FDF8EC] text-[#FDF8EC] ml-0.5" />
                 </div>
                 <div className="min-w-0">
-                  <div className="text-xs text-[#0369A1] font-bold uppercase tracking-wider">
+                  <div className="text-xs text-[#8B4F0E] font-bold tracking-wide">
                     Continue Proof
                   </div>
-                  <div className="text-sm font-bold text-[#0C1B2E] truncate">
+                  <div className="text-sm font-bold text-[#2C2115] truncate">
                     {nextLevelToPlay.world.name} · Lvl {nextLevelToPlay.level.number}: {nextLevelToPlay.level.name}
                   </div>
                 </div>
               </div>
 
-              <span className="text-sm text-[#0369A1] font-bold shrink-0 ml-2">
+              <span className="text-sm text-[#8B4F0E] font-bold shrink-0 ml-2">
                 Play →
               </span>
             </button>
@@ -135,23 +135,23 @@ export const WorldMap: React.FC<WorldMapProps> = ({
           {onOpenFreeplay && (
             <button
               onClick={onOpenFreeplay}
-              className="w-full min-h-[52px] py-2.5 px-3.5 rounded-xl bg-[#EAF2FF] border border-[#93C5FD] hover:bg-[#DBEAFE] hover:border-[#60A5FA] flex items-center justify-between text-left transition active:scale-[0.99] cursor-pointer"
+              className="w-full min-h-[52px] py-2.5 px-3.5 rounded-xl bg-[#EAE0CB] border border-[#C5AE8A] hover:bg-[#E1D4B8] hover:border-[#B2976F] flex items-center justify-between text-left transition active:scale-[0.99] cursor-pointer"
             >
               <div className="flex items-center gap-3 min-w-0">
-                <div className="w-9 h-9 rounded-xl bg-[#1D4ED8] flex items-center justify-center shrink-0 shadow-xs">
-                  <Sparkles className="w-4 h-4 text-[#FFFFFF]" />
+                <div className="w-9 h-9 rounded-xl bg-[#6B4C35] flex items-center justify-center shrink-0 shadow-xs">
+                  <Sparkles className="w-4 h-4 text-[#FDF8EC]" />
                 </div>
                 <div className="min-w-0">
-                  <div className="text-xs text-[#1D4ED8] font-bold uppercase tracking-wider">
+                  <div className="text-xs text-[#6B4C35] font-bold tracking-wide">
                     Unguided Mode
                   </div>
-                  <div className="text-sm font-bold text-[#0C1B2E] truncate">
+                  <div className="text-sm font-bold text-[#2C2115] truncate">
                     Freeplay Proof Sandbox
                   </div>
                 </div>
               </div>
 
-              <span className="text-sm text-[#1D4ED8] font-bold shrink-0 ml-2">
+              <span className="text-sm text-[#6B4C35] font-bold shrink-0 ml-2">
                 Open →
               </span>
             </button>
@@ -160,8 +160,8 @@ export const WorldMap: React.FC<WorldMapProps> = ({
 
         {/* Worlds Accordion List */}
         <div className="space-y-3">
-          <div className="text-xs font-bold uppercase tracking-wider text-[#36506B] px-1">
-            Worlds & Theorems
+          <div className="text-xs font-bold tracking-wide text-[#5C4A36] px-1">
+            Worlds &amp; Theorems
           </div>
 
           {WORLDS.map((world, wIdx) => {
@@ -180,8 +180,8 @@ export const WorldMap: React.FC<WorldMapProps> = ({
                 key={world.id}
                 className={`rounded-2xl border transition-all duration-200 overflow-hidden ${
                   isUnlocked
-                    ? 'bg-[#FFFFFF] border-[#C5D8EC] shadow-xs'
-                    : 'bg-[#E6F0FA]/60 border-[#C5D8EC]/70 opacity-65'
+                    ? 'bg-[#F5EEDB] border-[#CEBA92] shadow-xs'
+                    : 'bg-[#E3D4B3]/65 border-[#CEBA92]/70 opacity-70'
                 }`}
               >
                 {/* World Header Card */}
@@ -189,45 +189,45 @@ export const WorldMap: React.FC<WorldMapProps> = ({
                   disabled={!isUnlocked}
                   onClick={() => toggleWorld(world.id)}
                   className={`w-full min-h-[64px] p-3.5 flex items-center justify-between text-left transition ${
-                    isUnlocked ? 'hover:bg-[#F0F7FF] cursor-pointer active:scale-[0.995]' : 'cursor-not-allowed'
+                    isUnlocked ? 'hover:bg-[#EFE5CC] cursor-pointer active:scale-[0.995]' : 'cursor-not-allowed'
                   }`}
                 >
                   <div className="flex items-center gap-3.5 min-w-0">
                     <div
                       className="w-11 h-11 rounded-xl flex items-center justify-center shrink-0 border"
                       style={{
-                        backgroundColor: `${world.color}16`,
-                        borderColor: `${world.color}45`,
+                        backgroundColor: `${world.color}18`,
+                        borderColor: `${world.color}48`,
                         color: world.color,
                       }}
                     >
-                      {isUnlocked ? getIcon(world.icon) : <Lock className="w-4 h-4 text-[#526D88]" />}
+                      {isUnlocked ? getIcon(world.icon) : <Lock className="w-4 h-4 text-[#7D6952]" />}
                     </div>
 
                     <div className="min-w-0">
                       <div className="flex items-center gap-2">
-                        <h3 className="text-base font-extrabold text-[#0C1B2E] truncate">
+                        <h3 className="text-base font-extrabold text-[#2C2115] truncate">
                           {world.name}
                         </h3>
                         {isWorldMastered && (
-                          <span className="text-[#475569] text-xs font-bold flex items-center gap-1 shrink-0">
+                          <span className="text-[#5F5343] text-xs font-bold flex items-center gap-1 shrink-0">
                             <CheckCircle2 className="w-3.5 h-3.5" />
                             Done
                           </span>
                         )}
                       </div>
-                      <p className="text-sm text-[#36506B] truncate">
+                      <p className="text-sm text-[#5C4A36] truncate">
                         {world.subtitle}
                       </p>
                     </div>
                   </div>
 
                   <div className="flex items-center gap-2 shrink-0 ml-2">
-                    <span className="text-sm font-mono font-bold text-[#36506B]">
+                    <span className="text-sm font-mono font-bold text-[#5C4A36] tabular-nums">
                       {completedInWorld}/{world.levels.length}
                     </span>
                     {isUnlocked && (
-                      <div className="text-[#36506B]">
+                      <div className="text-[#5C4A36]">
                         {isExpanded ? (
                           <ChevronUp className="w-5 h-5" />
                         ) : (
@@ -240,7 +240,7 @@ export const WorldMap: React.FC<WorldMapProps> = ({
 
                 {/* Levels List when Expanded */}
                 {isExpanded && (
-                  <div className="px-3.5 pb-3.5 pt-2 space-y-2 border-t border-[#D6E5F4] bg-[#F4F8FC]/70 animate-fade-in">
+                  <div className="px-3.5 pb-3.5 pt-2 space-y-2 border-t border-[#D8C7A4] bg-[#EDE2C6]/75 animate-fade-in">
                     {world.levels.map((lvl) => {
                       const isDone = completedLevels[lvl.id];
                       return (
@@ -249,32 +249,32 @@ export const WorldMap: React.FC<WorldMapProps> = ({
                           onClick={() => onSelectLevel(lvl)}
                           className={`w-full min-h-[56px] p-3 rounded-xl border text-left flex items-center justify-between transition group active:scale-[0.99] cursor-pointer ${
                             isDone
-                              ? 'bg-[#F1F5F9] border-[#CBD5E1] hover:border-[#94A3B8]'
-                              : 'bg-[#FFFFFF] border-[#C5D8EC] hover:border-[#0369A1] hover:bg-[#F0F7FF]'
+                              ? 'bg-[#E6DAC0] border-[#BFA982] hover:border-[#A89066]'
+                              : 'bg-[#F5EEDB] border-[#CEBA92] hover:border-[#9A5B13] hover:bg-[#EFE5CC]'
                           }`}
                         >
                           <div className="flex items-center gap-3 min-w-0">
                             <div
                               className={`w-8 h-8 rounded-full flex items-center justify-center text-sm font-bold font-mono shrink-0 ${
                                 isDone
-                                  ? 'bg-[#475569] text-[#FFFFFF]'
-                                  : 'bg-[#E6F0FA] text-[#0C1B2E] border border-[#A8C4E0]'
+                                  ? 'bg-[#5F5343] text-[#FDF8EC]'
+                                  : 'bg-[#E3D4B3] text-[#2C2115] border border-[#BDA67C]'
                               }`}
                             >
                               {isDone ? <CheckCircle2 className="w-4 h-4" /> : lvl.number}
                             </div>
 
                             <div className="min-w-0">
-                              <div className="text-sm font-bold text-[#0C1B2E] truncate">
+                              <div className="text-sm font-bold text-[#2C2115] truncate">
                                 {lvl.name}
                               </div>
-                              <div className="text-xs font-mono text-[#36506B] truncate mt-0.5">
+                              <div className="text-xs font-mono text-[#5C4A36] truncate mt-0.5">
                                 {lvl.initialTarget}
                               </div>
                             </div>
                           </div>
 
-                          <span className="text-xs font-bold text-[#0369A1] shrink-0 ml-2">
+                          <span className="text-xs font-bold text-[#8B4F0E] shrink-0 ml-2">
                             {isDone ? 'Review' : 'Play'} →
                           </span>
                         </button>
@@ -292,17 +292,17 @@ export const WorldMap: React.FC<WorldMapProps> = ({
           <div className="pt-1 pb-2">
             <button
               onClick={onOpenSettings}
-              className="w-full min-h-[52px] py-3 px-4 rounded-2xl bg-[#FFFFFF] border border-[#C5D8EC] hover:bg-[#F0F7FF] flex items-center justify-between text-left transition active:scale-[0.99] cursor-pointer shadow-xs"
+              className="w-full min-h-[52px] py-3 px-4 rounded-2xl bg-[#F5EEDB] border border-[#CEBA92] hover:bg-[#EFE5CC] flex items-center justify-between text-left transition active:scale-[0.99] cursor-pointer shadow-xs"
             >
               <div className="flex items-center gap-2.5">
-                <Settings className="w-4 h-4 text-[#36506B]" />
-                <span className="text-sm text-[#0C1B2E] font-bold">Game Settings</span>
+                <Settings className="w-4 h-4 text-[#5C4A36]" />
+                <span className="text-sm text-[#2C2115] font-bold">Game Settings</span>
               </div>
               <div className="flex items-center gap-2 text-xs">
-                <span className={unlockAllTutorials ? 'text-[#0284C7] font-bold' : 'text-[#36506B] font-medium'}>
+                <span className={unlockAllTutorials ? 'text-[#8B4F0E] font-bold' : 'text-[#5C4A36] font-medium'}>
                   {unlockAllTutorials ? 'All Tutorials Unlocked' : 'Progressive Unlocking'}
                 </span>
-                <span className="text-sm font-bold text-[#36506B]">→</span>
+                <span className="text-sm font-bold text-[#5C4A36]">→</span>
               </div>
             </button>
           </div>

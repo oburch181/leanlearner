@@ -1,4 +1,4 @@
-import { Capacitor } from '@capacitor/core';
+import { Capacitor, SystemBars, SystemBarsStyle } from '@capacitor/core';
 import { App as CapacitorApp } from '@capacitor/app';
 import { StatusBar, Style } from '@capacitor/status-bar';
 
@@ -24,8 +24,15 @@ export function isStandaloneOrNative(): boolean {
 export async function configureNativeAndroidUI(): Promise<void> {
   if (!isNativeAndroid()) return;
   try {
+    await SystemBars.show();
+    await SystemBars.setStyle({ style: SystemBarsStyle.Light });
+  } catch {
+    // Ignore SystemBars errors if unavailable
+  }
+  try {
+    await StatusBar.show();
     await StatusBar.setStyle({ style: Style.Light });
-    await StatusBar.setBackgroundColor({ color: '#E6F0FA' });
+    await StatusBar.setBackgroundColor({ color: '#E3D4B3' });
     await StatusBar.setOverlaysWebView({ overlay: false });
   } catch {
     // Ignore status bar plugin errors in non-native environments

@@ -7,8 +7,8 @@ export const WORLDS: WorldDef[] = [
     name: 'Tutorial World',
     subtitle: 'Tactics & Basic Equality',
     icon: 'GraduationCap',
-    color: '#0284C7',
-    bgGradient: 'from-sky-600/10 to-blue-700/5',
+    color: '#9A5B13',
+    bgGradient: 'from-amber-700/10 to-yellow-800/5',
     description: 'Master the fundamental Lean 4 proof tactics: reflexivity (rfl) and term rewriting (rw).',
     levels: [
       {
@@ -253,8 +253,8 @@ export const WORLDS: WorldDef[] = [
     name: 'Addition World',
     subtitle: 'Mathematical Induction & Arithmetic Laws',
     icon: 'Plus',
-    color: '#0369A1',
-    bgGradient: 'from-blue-600/10 to-sky-700/5',
+    color: '#7C480D',
+    bgGradient: 'from-amber-800/10 to-stone-700/5',
     description: 'Learn the power of mathematical induction to prove commutativity and associativity of addition.',
     levels: [
       {
@@ -424,8 +424,8 @@ export const WORLDS: WorldDef[] = [
     name: 'Multiplication World',
     subtitle: 'Distributivity & Product Axioms',
     icon: 'X',
-    color: '#1D4ED8',
-    bgGradient: 'from-indigo-600/10 to-blue-700/5',
+    color: '#6B4C35',
+    bgGradient: 'from-stone-700/10 to-amber-800/5',
     description: 'Construct multiplication from repeated addition and prove the distributive and commutative laws.',
     levels: [
       {
@@ -605,8 +605,8 @@ export const WORLDS: WorldDef[] = [
     name: 'Power World',
     subtitle: 'Exponents & Peano Powers',
     icon: 'Zap',
-    color: '#0EA5E9',
-    bgGradient: 'from-sky-500/10 to-blue-600/5',
+    color: '#8C5319',
+    bgGradient: 'from-amber-700/10 to-orange-900/5',
     description: 'Learn how exponentiation is defined on natural numbers and prove exponent laws like a^(m+n) = a^m * a^n.',
     levels: [
       {
@@ -723,8 +723,8 @@ export const WORLDS: WorldDef[] = [
     name: 'Implication World',
     subtitle: 'Logic & Assumptions',
     icon: 'ArrowRight',
-    color: '#475569',
-    bgGradient: 'from-slate-600/10 to-slate-700/5',
+    color: '#5C5248',
+    bgGradient: 'from-stone-600/10 to-stone-700/5',
     description: 'Learn logical implications, introducing hypotheses with intro, and completing proofs with exact.',
     levels: [
       {
@@ -781,8 +781,8 @@ export const WORLDS: WorldDef[] = [
     name: 'Inequality World',
     subtitle: 'Order & Less-Than-Or-Equal',
     icon: 'Scale',
-    color: '#2563EB',
-    bgGradient: 'from-blue-600/10 to-slate-600/5',
+    color: '#7A4226',
+    bgGradient: 'from-orange-900/10 to-stone-700/5',
     description: 'Work with the partial order on natural numbers defined by existence of a difference: a ≤ b.',
     levels: [
       {

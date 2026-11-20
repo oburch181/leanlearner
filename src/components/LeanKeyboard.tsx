@@ -169,17 +169,17 @@ export const LeanKeyboard: React.FC<LeanKeyboardProps> = ({
   const displayedLemmas = Array.from(new Set([...unlockedTheorems, ...defaultLemmas]));
 
   return (
-    <div className="w-full bg-[#DCE9F7] border-t border-[#A8C4E0] flex flex-col select-none transition-all duration-200">
+    <div className="w-full bg-[#DAC8A2] border-t border-[#BDA67C] flex flex-col select-none transition-all duration-200">
       {/* Toast Notice when tapping locked tactic */}
       {lockNotice && (
-        <div className="bg-[#E0F2FE] border-b border-[#7DD3FC] px-3 py-1.5 flex items-center justify-center gap-2 text-xs text-[#075985] animate-fade-in font-bold">
-          <Lock className="w-3.5 h-3.5 text-[#0284C7] shrink-0" />
+        <div className="bg-[#EFE0BA] border-b border-[#C9A96E] px-3 py-1.5 flex items-center justify-center gap-2 text-xs text-[#6E3F0A] animate-fade-in font-bold">
+          <Lock className="w-3.5 h-3.5 text-[#8B4F0E] shrink-0" />
           <span>{lockNotice}</span>
         </div>
       )}
 
       {/* Keyboard Header / Tab Switcher */}
-      <div className="flex items-center justify-between px-2 py-1.5 bg-[#CEDFF2] border-b border-[#A8C4E0] gap-1.5">
+      <div className="flex items-center justify-between px-2 py-1.5 bg-[#D0BC92] border-b border-[#BDA67C] gap-1.5">
         <div className="flex items-center gap-1 overflow-x-auto no-scrollbar">
           <button
             onClick={() => {
@@ -189,8 +189,8 @@ export const LeanKeyboard: React.FC<LeanKeyboardProps> = ({
             }}
             className={`px-2.5 min-h-[34px] rounded-lg font-bold text-xs transition cursor-pointer shrink-0 ${
               activeTab === 'tactics' && !isMinimized
-                ? 'bg-[#0369A1] text-[#FFFFFF] shadow-xs'
-                : 'text-[#36506B] hover:bg-[#C2D7EE]'
+                ? 'bg-[#9A5B13] text-[#FDF8EC] shadow-xs'
+                : 'text-[#4A3B2C] hover:bg-[#C5AF82]'
             }`}
           >
             Tactics
@@ -203,8 +203,8 @@ export const LeanKeyboard: React.FC<LeanKeyboardProps> = ({
             }}
             className={`px-2.5 min-h-[34px] rounded-lg font-bold text-xs transition cursor-pointer shrink-0 ${
               activeTab === 'variables' && !isMinimized
-                ? 'bg-[#0369A1] text-[#FFFFFF] shadow-xs'
-                : 'text-[#36506B] hover:bg-[#C2D7EE]'
+                ? 'bg-[#9A5B13] text-[#FDF8EC] shadow-xs'
+                : 'text-[#4A3B2C] hover:bg-[#C5AF82]'
             }`}
           >
             Vars
@@ -217,8 +217,8 @@ export const LeanKeyboard: React.FC<LeanKeyboardProps> = ({
             }}
             className={`px-2.5 min-h-[34px] rounded-lg font-bold text-xs transition cursor-pointer shrink-0 ${
               activeTab === 'symbols' && !isMinimized
-                ? 'bg-[#0369A1] text-[#FFFFFF] shadow-xs'
-                : 'text-[#36506B] hover:bg-[#C2D7EE]'
+                ? 'bg-[#9A5B13] text-[#FDF8EC] shadow-xs'
+                : 'text-[#4A3B2C] hover:bg-[#C5AF82]'
             }`}
           >
             Symbols
@@ -231,8 +231,8 @@ export const LeanKeyboard: React.FC<LeanKeyboardProps> = ({
             }}
             className={`px-2.5 min-h-[34px] rounded-lg font-bold text-xs transition cursor-pointer shrink-0 ${
               activeTab === 'lemmas' && !isMinimized
-                ? 'bg-[#0369A1] text-[#FFFFFF] shadow-xs'
-                : 'text-[#36506B] hover:bg-[#C2D7EE]'
+                ? 'bg-[#9A5B13] text-[#FDF8EC] shadow-xs'
+                : 'text-[#4A3B2C] hover:bg-[#C5AF82]'
             }`}
           >
             Lemmas
@@ -247,7 +247,7 @@ export const LeanKeyboard: React.FC<LeanKeyboardProps> = ({
                 key={s}
                 onMouseDown={(e) => e.preventDefault()}
                 onClick={() => handlePress(s)}
-                className="px-2 min-h-[32px] rounded-lg bg-[#FFFFFF] border border-[#A8C4E0] text-[#0369A1] font-mono font-bold text-xs active:scale-95 cursor-pointer"
+                className="px-2 min-h-[32px] rounded-lg bg-[#F5EEDB] border border-[#BDA67C] text-[#8B4F0E] font-mono font-bold text-xs active:scale-95 cursor-pointer"
               >
                 {s}
               </button>
@@ -260,7 +260,7 @@ export const LeanKeyboard: React.FC<LeanKeyboardProps> = ({
               playKeyClick(soundEnabled);
               setIsMinimized(!isMinimized);
             }}
-            className="min-w-[34px] min-h-[34px] rounded-lg text-[#36506B] hover:bg-[#C2D7EE] active:scale-95 flex items-center justify-center cursor-pointer"
+            className="min-w-[34px] min-h-[34px] rounded-lg text-[#4A3B2C] hover:bg-[#C5AF82] active:scale-95 flex items-center justify-center cursor-pointer"
             title={isMinimized ? 'Expand Lean Keyboard' : 'Minimize Lean Keyboard'}
           >
             {isMinimized ? <ChevronUp className="w-5 h-5" /> : <ChevronDown className="w-5 h-5" />}
@@ -283,10 +283,10 @@ export const LeanKeyboard: React.FC<LeanKeyboardProps> = ({
                       key={t.label}
                       onMouseDown={(e) => e.preventDefault()}
                       onClick={() => showLockedNotice(status.reason || 'Locked tactic')}
-                      className="min-h-[42px] py-2 px-1.5 rounded-xl bg-[#CEDFF2] border border-[#A8C4E0] text-[#526D88] font-mono text-xs font-bold flex items-center justify-center gap-1 opacity-65 cursor-not-allowed"
+                      className="min-h-[42px] py-2 px-1.5 rounded-xl bg-[#D0BC92] border border-[#BDA67C] text-[#6E5C47] font-mono text-xs font-bold flex items-center justify-center gap-1 opacity-70 cursor-not-allowed"
                       title={status.reason}
                     >
-                      <Lock className="w-3.5 h-3.5 text-[#526D88]" />
+                      <Lock className="w-3.5 h-3.5 text-[#6E5C47]" />
                       <span>{t.label}</span>
                     </button>
                   );
@@ -297,7 +297,7 @@ export const LeanKeyboard: React.FC<LeanKeyboardProps> = ({
                     key={t.label}
                     onMouseDown={(e) => e.preventDefault()}
                     onClick={() => handlePress(t.insert, t.offset)}
-                    className="min-h-[42px] py-2 px-1.5 rounded-xl bg-[#FFFFFF] border border-[#A8C4E0] border-b-2 text-[#0C1B2E] hover:bg-[#F0F7FF] active:bg-[#0369A1] active:text-[#FFFFFF] font-mono text-sm font-bold shadow-xs transition active:scale-95 flex items-center justify-center gap-1 cursor-pointer"
+                    className="min-h-[42px] py-2 px-1.5 rounded-xl bg-[#F5EEDB] border border-[#BDA67C] border-b-2 text-[#2C2115] hover:bg-[#EFE5CC] active:bg-[#9A5B13] active:text-[#FDF8EC] font-mono text-sm font-bold shadow-xs transition active:scale-95 flex items-center justify-center gap-1 cursor-pointer"
                   >
                     <span>{t.label}</span>
                   </button>
@@ -317,8 +317,8 @@ export const LeanKeyboard: React.FC<LeanKeyboardProps> = ({
                 }}
                 className={`min-h-[42px] py-2 px-1 rounded-xl font-mono text-xs font-bold transition active:scale-95 border border-b-2 ${
                   isTacticUnlocked('rw').unlocked
-                    ? 'bg-[#E0F2FE] border-[#7DD3FC] text-[#0369A1] hover:bg-[#BAE6FD] active:bg-[#0369A1] active:text-[#FFFFFF] cursor-pointer'
-                    : 'bg-[#CEDFF2] border-[#A8C4E0] text-[#526D88] opacity-65 cursor-not-allowed'
+                    ? 'bg-[#EFE0BA] border-[#C9A96E] text-[#6E3F0A] hover:bg-[#E7D4A6] active:bg-[#9A5B13] active:text-[#FDF8EC] cursor-pointer'
+                    : 'bg-[#D0BC92] border-[#BDA67C] text-[#6E5C47] opacity-70 cursor-not-allowed'
                 }`}
               >
                 rw [add_0]
@@ -334,7 +334,7 @@ export const LeanKeyboard: React.FC<LeanKeyboardProps> = ({
                   key={v}
                   onMouseDown={(e) => e.preventDefault()}
                   onClick={() => handlePress(v)}
-                  className="min-h-[42px] py-2 rounded-xl bg-[#FFFFFF] border border-[#A8C4E0] border-b-2 text-[#0284C7] hover:bg-[#F0F7FF] active:bg-[#0284C7] active:text-[#FFFFFF] font-mono text-base font-extrabold shadow-xs transition active:scale-95 cursor-pointer"
+                  className="min-h-[42px] py-2 rounded-xl bg-[#F5EEDB] border border-[#BDA67C] border-b-2 text-[#7B4B2A] hover:bg-[#EFE5CC] active:bg-[#7B4B2A] active:text-[#FDF8EC] font-mono text-base font-extrabold shadow-xs transition active:scale-95 cursor-pointer"
                 >
                   {v}
                 </button>
@@ -350,7 +350,7 @@ export const LeanKeyboard: React.FC<LeanKeyboardProps> = ({
                   key={sym}
                   onMouseDown={(e) => e.preventDefault()}
                   onClick={() => handlePress(sym)}
-                  className="min-h-[42px] py-2 rounded-xl bg-[#FFFFFF] border border-[#A8C4E0] border-b-2 text-[#475569] hover:bg-[#F0F7FF] active:bg-[#475569] active:text-[#FFFFFF] font-mono text-sm font-extrabold shadow-xs transition active:scale-95 cursor-pointer"
+                  className="min-h-[42px] py-2 rounded-xl bg-[#F5EEDB] border border-[#BDA67C] border-b-2 text-[#5F5343] hover:bg-[#EFE5CC] active:bg-[#5F5343] active:text-[#FDF8EC] font-mono text-sm font-extrabold shadow-xs transition active:scale-95 cursor-pointer"
                 >
                   {sym}
                 </button>
@@ -376,8 +376,8 @@ export const LeanKeyboard: React.FC<LeanKeyboardProps> = ({
                     }}
                     className={`min-h-[38px] py-1.5 px-3 rounded-xl font-mono text-xs font-bold transition active:scale-95 border border-b-2 ${
                       rwStatus.unlocked
-                        ? 'bg-[#FFFFFF] border-[#7DD3FC] text-[#0369A1] hover:bg-[#E0F2FE] active:bg-[#0369A1] active:text-[#FFFFFF] cursor-pointer'
-                        : 'bg-[#CEDFF2] border-[#A8C4E0] text-[#526D88] opacity-65 cursor-not-allowed'
+                        ? 'bg-[#F5EEDB] border-[#C9A96E] text-[#8B4F0E] hover:bg-[#EFE0BA] active:bg-[#9A5B13] active:text-[#FDF8EC] cursor-pointer'
+                        : 'bg-[#D0BC92] border-[#BDA67C] text-[#6E5C47] opacity-70 cursor-not-allowed'
                     }`}
                   >
                     {lemma}
@@ -396,7 +396,7 @@ export const LeanKeyboard: React.FC<LeanKeyboardProps> = ({
                 playKeyClick(soundEnabled);
                 onMoveCursor?.('left');
               }}
-              className="min-w-[40px] min-h-[42px] rounded-xl bg-[#FFFFFF] border border-[#A8C4E0] border-b-2 text-[#0C1B2E] hover:bg-[#F0F7FF] active:scale-95 flex items-center justify-center cursor-pointer"
+              className="min-w-[40px] min-h-[42px] rounded-xl bg-[#F5EEDB] border border-[#BDA67C] border-b-2 text-[#2C2115] hover:bg-[#EFE5CC] active:scale-95 flex items-center justify-center cursor-pointer"
               title="Move cursor left"
             >
               <ChevronLeft className="w-4 h-4" />
@@ -409,7 +409,7 @@ export const LeanKeyboard: React.FC<LeanKeyboardProps> = ({
                 playKeyClick(soundEnabled);
                 onMoveCursor?.('right');
               }}
-              className="min-w-[40px] min-h-[42px] rounded-xl bg-[#FFFFFF] border border-[#A8C4E0] border-b-2 text-[#0C1B2E] hover:bg-[#F0F7FF] active:scale-95 flex items-center justify-center cursor-pointer"
+              className="min-w-[40px] min-h-[42px] rounded-xl bg-[#F5EEDB] border border-[#BDA67C] border-b-2 text-[#2C2115] hover:bg-[#EFE5CC] active:scale-95 flex items-center justify-center cursor-pointer"
               title="Move cursor right"
             >
               <ChevronRight className="w-4 h-4" />
@@ -419,7 +419,7 @@ export const LeanKeyboard: React.FC<LeanKeyboardProps> = ({
             <button
               onMouseDown={(e) => e.preventDefault()}
               onClick={() => handlePress('  ')}
-              className="min-h-[42px] px-3 rounded-xl bg-[#FFFFFF] border border-[#A8C4E0] border-b-2 text-[#0C1B2E] text-xs font-mono font-bold hover:bg-[#F0F7FF] active:scale-95 cursor-pointer"
+              className="min-h-[42px] px-3 rounded-xl bg-[#F5EEDB] border border-[#BDA67C] border-b-2 text-[#2C2115] text-xs font-mono font-bold hover:bg-[#EFE5CC] active:scale-95 cursor-pointer"
               title="Indent 2 spaces"
             >
               Tab
@@ -429,7 +429,7 @@ export const LeanKeyboard: React.FC<LeanKeyboardProps> = ({
             <button
               onMouseDown={(e) => e.preventDefault()}
               onClick={() => handlePress(' ')}
-              className="flex-1 min-h-[42px] rounded-xl bg-[#FFFFFF] border border-[#A8C4E0] border-b-2 text-[#0C1B2E] font-semibold flex items-center justify-center gap-1.5 text-xs hover:bg-[#F0F7FF] active:scale-95 cursor-pointer"
+              className="flex-1 min-h-[42px] rounded-xl bg-[#F5EEDB] border border-[#BDA67C] border-b-2 text-[#2C2115] font-semibold flex items-center justify-center gap-1.5 text-xs hover:bg-[#EFE5CC] active:scale-95 cursor-pointer"
             >
               <Space className="w-4 h-4" />
               <span>Space</span>
@@ -445,7 +445,7 @@ export const LeanKeyboard: React.FC<LeanKeyboardProps> = ({
               onPointerLeave={stopBackspaceRepeat}
               onPointerCancel={stopBackspaceRepeat}
               onContextMenu={(e) => e.preventDefault()}
-              className="min-w-[48px] min-h-[42px] px-3 rounded-xl bg-[#FEF2F2] border border-[#FECACA] border-b-2 text-[#991B1B] hover:bg-[#FEE2E2] active:bg-[#FECACA] active:scale-95 flex items-center justify-center select-none touch-none cursor-pointer"
+              className="min-w-[48px] min-h-[42px] px-3 rounded-xl bg-[#F3DDD5] border border-[#D6A696] border-b-2 text-[#7C261D] hover:bg-[#ECCBC0] active:bg-[#E2B5A6] active:scale-95 flex items-center justify-center select-none touch-none cursor-pointer"
               title="Backspace (Hold to delete continuously)"
             >
               <Delete className="w-5 h-5" />
@@ -458,7 +458,7 @@ export const LeanKeyboard: React.FC<LeanKeyboardProps> = ({
                 playKeyClick(soundEnabled);
                 onEnter();
               }}
-              className="min-w-[52px] min-h-[42px] px-4 rounded-xl bg-[#0369A1] text-[#FFFFFF] font-bold flex items-center justify-center gap-1 hover:bg-[#075985] active:scale-95 shadow-sm cursor-pointer"
+              className="min-w-[52px] min-h-[42px] px-4 rounded-xl bg-[#9A5B13] text-[#FDF8EC] font-bold flex items-center justify-center gap-1 hover:bg-[#7C480D] active:scale-95 shadow-sm cursor-pointer"
               title="New Line / Step"
             >
               <CornerDownLeft className="w-5 h-5" />
